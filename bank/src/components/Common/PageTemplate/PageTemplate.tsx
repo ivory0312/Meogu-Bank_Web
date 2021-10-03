@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import "./PageTemplate.scss";
 
-const PageTemplate = ({ chidren }: any): JSX.Element => {
-  return <div className="pageTemplate">{chidren}</div>;
+const PageTemplate = (children: { children: ReactNode }): JSX.Element => {
+  return <div className="pageTemplate">{children.children}</div>;
 };
 
 export default PageTemplate;

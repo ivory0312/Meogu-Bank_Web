@@ -5,7 +5,6 @@ import Routes from "./Routes";
 function App() {
   return (
     <>
-      <div>123</div>
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
