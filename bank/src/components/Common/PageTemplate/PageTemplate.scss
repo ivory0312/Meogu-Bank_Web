@@ -1,2 +1,14 @@
 .pageTemplate {
+  &-side {
+    position: fixed;
+    float: left;
+    width: 20%;
+    height: 100vh;
+    background-color: var(--white);
+  }
+  &-contents {
+    float: left;
+    width: 80%;
+    margin-left: calc(100vh - 29%); //추후 변경
+  }
 }

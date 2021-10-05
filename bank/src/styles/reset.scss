@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica" !important;
+  font-display: swap;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+span,
+div {
+  color: var(--black);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
+  background: linear-gradient(#ebf3fc, #f2f3f5);
+}
+
+body {
+  line-height: 1.34;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
