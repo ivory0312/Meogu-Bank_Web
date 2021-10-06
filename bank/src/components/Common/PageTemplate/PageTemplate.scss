@@ -4,11 +4,12 @@
     float: left;
     width: 20%;
     height: 100vh;
+    border-radius: 0 20px 20px 0;
     background-color: var(--white);
   }
   &-contents {
     float: left;
     width: 80%;
-    margin-left: calc(100vh - 29%); //추후 변경
+    margin-left: 20%; //추후 변경
   }
 }
