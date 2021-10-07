@@ -1,3 +1,38 @@
 .side {
   padding: 50px;
+
+  &-profile {
+    display: flex;
+    img {
+      float: left;
+      outline: 1px solid #d9d9d9;
+      border-radius: 50px;
+    }
+    &-info {
+      float: left;
+      font-size: 18px;
+
+      div {
+        margin: 15px;
+      }
+      &-name {
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+  }
+  &-list {
+    margin-top: 55px;
+
+    &-item {
+      display: flex;
+      margin-top: 35px;
+      cursor: pointer;
+
+      span {
+        margin: 3px 0 0 20px;
+        font-size: 20px;
+      }
+    }
+  }
 }
