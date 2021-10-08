@@ -2,7 +2,7 @@ import DGB from "assets/DGB.svg";
 
 import "./MainListItem.scss";
 
-const MainListItem = (props: { name: string; price: string }): JSX.Element => {
+const MainListItem = (props: { name: string; price: number }): JSX.Element => {
   return (
     <div className="mainListItem">
       <div className="mainListItem-item">

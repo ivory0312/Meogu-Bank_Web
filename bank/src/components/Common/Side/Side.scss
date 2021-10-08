@@ -3,18 +3,11 @@
 
   &-profile {
     display: flex;
-    img {
-      float: left;
-      outline: 1px solid var(--darkStroke);
-      border-radius: 50px;
-    }
+
     &-info {
       float: left;
       font-size: 18px;
 
-      div {
-        margin: 15px;
-      }
       &-name {
         font-size: 22px;
         font-weight: bold;
@@ -22,7 +15,7 @@
     }
   }
   &-list {
-    margin-top: 55px;
+    margin-top: 25px;
 
     &-item {
       display: flex;

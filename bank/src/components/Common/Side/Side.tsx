@@ -17,11 +17,10 @@ const Side = (): JSX.Element => {
   return (
     <div className="side">
       <div className="side-profile">
-        <img src={profileImage} alt="profileImage" />
         <div className="side-profile-info">
-          <div>안녕하세요!</div>
           <div>
-            <span className="side-profile-info-name">박상아</span> 님
+            <span className="side-profile-info-name">박상아</span> 님,
+            안녕하세요!
           </div>
         </div>
       </div>
