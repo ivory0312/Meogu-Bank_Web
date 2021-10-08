@@ -5,7 +5,7 @@
     display: flex;
     img {
       float: left;
-      outline: 1px solid #d9d9d9;
+      outline: 1px solid var(--darkStroke);
       border-radius: 50px;
     }
     &-info {
@@ -35,4 +35,9 @@
       }
     }
   }
+}
+
+.isMain {
+  font-weight: bold;
+  color: var(--main);
 }

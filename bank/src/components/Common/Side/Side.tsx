@@ -1,6 +1,7 @@
 import profileImage from "assets/defaultProfile.svg";
 import Home from "assets/Home/Home";
 import Money from "assets/Money/Money";
+import { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
 import "./Side.scss";
@@ -8,6 +9,10 @@ import "./Side.scss";
 const Side = (): JSX.Element => {
   const history = useHistory();
   const path: string = window.location.pathname;
+
+  const handleMenu = useCallback((url: string) => {
+    history.push(url);
+  }, []);
 
   return (
     <div className="side">
@@ -21,11 +26,11 @@ const Side = (): JSX.Element => {
         </div>
       </div>
       <div className="side-list">
-        <div className="side-list-item">
+        <div className="side-list-item" onClick={() => handleMenu("/")}>
           <Home props={path === "/" ? "#4880EE" : "#999999"} />
-          <span>홈 화면</span>
+          <span className={path === "/" ? "isMain" : ""}>홈 화면</span>
         </div>
-        <div className="side-list-item">
+        <div className="side-list-item" onClick={() => handleMenu("/send")}>
           <Money props="#999999" />
           <span>계좌 이체</span>
         </div>
