@@ -31,7 +31,7 @@ const Side = (): JSX.Element => {
           <span className={path === "/" ? "isMain" : ""}>홈 화면</span>
         </div>
         <div className="side-list-item" onClick={() => handleMenu("/send")}>
-          <Money props="#999999" />
+          <Money props={path === "/send" ? "#4880EE" : "#999999"} />
           <span>계좌 이체</span>
         </div>
       </div>

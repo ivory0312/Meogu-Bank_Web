@@ -1,2 +1,15 @@
 .main {
+  padding: 50px;
+
+  &-list {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--white);
+
+    &-title {
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
 }
