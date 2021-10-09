@@ -9,7 +9,14 @@
   }
   &-contents {
     float: left;
-    width: 75%;
+    width: calc(100% - 330px);
     margin-left: 330px;
   }
+}
+
+.isMore {
+  display: block;
+}
+.isntMore {
+  display: none;
 }
