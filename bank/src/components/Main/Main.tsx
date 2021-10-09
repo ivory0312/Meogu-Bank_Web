@@ -1,12 +1,14 @@
+import { useState } from "react";
 import MainListItem from "./MainListItem";
 import useMainList from "hooks/main/useMainList";
+import { RiMore2Line } from "react-icons/ri";
 
 import "./Main.scss";
-import { useState } from "react";
 
 const Main = (): JSX.Element => {
   const { MainListDumi } = useMainList();
-  const [isMore, setIsMore] = useState(false);
+  const [isMore, setIsMore] = useState<boolean>(false);
+  let count: number = 0;
   const handleMore = () => {
     if (isMore) {
       setIsMore(false);
@@ -19,22 +21,35 @@ const Main = (): JSX.Element => {
     <div className="main">
       <div className="main-list">
         <div className="main-list-title">계좌</div>
-        {MainListDumi.map((data) => {
-          return (
-            <>
-              <MainListItem name={data.name} price={data.price} />
-            </>
-          );
-        })}
-        <div
-          className={!isMore ? "isMore" : "isntMore"}
-          onClick={() => handleMore()}
-        >
-          open
-        </div>
-        <div className={isMore ? "isMore" : "isntMore"}>
-          <div>content</div>
-          <div onClick={() => handleMore()}>close</div>
+        <div className="main-list-content">
+          {MainListDumi.map((data) => {
+            if (count !== 4) {
+              count += 1;
+            } else {
+              return;
+            }
+            return (
+              <>
+                <MainListItem name={data.name} price={data.price} />
+              </>
+            );
+          })}
+          <div
+            className={!isMore ? "isMore" : "isntMore"}
+            onClick={() => handleMore()}
+          >
+            더보기
+          </div>
+          <div className={isMore ? "isMore" : "isntMore"}>
+            {MainListDumi.slice(4).map((data) => {
+              return (
+                <>
+                  <MainListItem name={data.name} price={data.price} />
+                </>
+              );
+            })}
+            <div onClick={() => handleMore()}>간략히</div>
+          </div>
         </div>
       </div>
     </div>
