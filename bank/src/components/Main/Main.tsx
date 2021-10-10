@@ -7,43 +7,47 @@ import "./Main.scss";
 const Main = (): JSX.Element => {
   const { MainListDumi } = useMainList();
   const [isMore, setIsMore] = useState<boolean>(false);
+  const [height, setHeight] = useState<string>("335");
   let count: number = 0;
-  let height: string = "";
   const handleMore = () => {
     if (isMore) {
       setIsMore(false);
-      height = "335";
+      setHeight("335");
+      console.log(height);
     } else {
       setIsMore(true);
-      height = String(85 * MainListDumi.length);
+      setHeight(String(85 * MainListDumi.length));
+      console.log(height);
     }
   };
 
   return (
     <>
-      <style></style>
       <div className="main">
         <div className="main-list">
-          <div className="main-list-title">계좌</div>
-          <div className="main-list-content">
-            <input id="sidebar" type="checkbox" />
-            <div className="on-off">
-              <label htmlFor="sidebar">더보기</label>
+          <div className="main-list-title">
+            <div>계좌</div>
+            <div
+              className="main-list-title-button"
+              onClick={() => handleMore()}
+            >
+              {isMore ? "간략히" : "자세히"}
             </div>
-            <div className="sidebar">
-              {MainListDumi.map((data) => {
-                // if (count !== 4) {
-                //   count += 1;
-                // } else {
-                //   return;
-                // }
-                return (
-                  <>
-                    <MainListItem name={data.name} price={data.price} />
-                  </>
-                );
-              })}
-              {/* <div className={isMore ? "isMore" : "isntMore"}>
+          </div>
+          <div className="main-list-content" style={{ height: `${height}px` }}>
+            {MainListDumi.map((data) => {
+              // if (count !== 4) {
+              //   count += 1;
+              // } else {
+              //   return;
+              // }
+              return (
+                <>
+                  <MainListItem name={data.name} price={data.price} />
+                </>
+              );
+            })}
+            {/* <div className={isMore ? "isMore" : "isntMore"}>
             {MainListDumi.slice(4).map((data) => {
               return (
                 <>
@@ -53,13 +57,6 @@ const Main = (): JSX.Element => {
               })}
               <div onClick={() => handleMore()}>간략히</div>
             </div> */}
-            </div>
-            {/* <div
-          className={!isMore ? "isMore" : "isntMore"}
-          onClick={() => handleMore()}
-        >
-          더보기
-        </div> */}
           </div>
         </div>
       </div>
