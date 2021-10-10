@@ -1,0 +1,39 @@
+.mainList {
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  background-color: var(--white);
+
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+
+    &-button {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--main);
+      cursor: pointer;
+    }
+  }
+  &-content {
+    height: auto;
+    overflow: hidden;
+    transition: height 0.3s;
+  }
+  &-icon {
+    display: flex;
+    width: 55px;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  &-text {
+    margin-left: 10px;
+    padding: 17px 5px;
+    color: var(--main);
+  }
+}
