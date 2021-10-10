@@ -22,35 +22,43 @@ const Main = (): JSX.Element => {
       <div className="main-list">
         <div className="main-list-title">계좌</div>
         <div className="main-list-content">
-          {MainListDumi.map((data) => {
-            if (count !== 4) {
-              count += 1;
-            } else {
-              return;
-            }
-            return (
-              <>
-                <MainListItem name={data.name} price={data.price} />
-              </>
-            );
-          })}
-          <div
-            className={!isMore ? "isMore" : "isntMore"}
-            onClick={() => handleMore()}
-          >
-            더보기
-          </div>
-          <div className={isMore ? "isMore" : "isntMore"}>
-            {MainListDumi.slice(4).map((data) => {
+          <input id="sidebar" type="checkbox" />
+          <div className="sidebar">
+            {MainListDumi.map((data) => {
+              // if (count !== 4) {
+              //   count += 1;
+              // } else {
+              //   return;
+              // }
               return (
                 <>
                   <MainListItem name={data.name} price={data.price} />
                 </>
               );
             })}
-            <div onClick={() => handleMore()}>간략히</div>
           </div>
+          <div className="on-off">
+            <label htmlFor="sidebar">더보기</label>
+          </div>
+
+          {/* <div className={isMore ? "isMore" : "isntMore"}>
+            {MainListDumi.slice(4).map((data) => {
+              return (
+                <>
+                <MainListItem name={data.name} price={data.price} />
+                </>
+                );
+              })}
+              <div onClick={() => handleMore()}>간략히</div>
+            </div> */}
         </div>
+        {/* <div
+          className={!isMore ? "isMore" : "isntMore"}
+          onClick={() => handleMore()}
+          >
+          더보기
+        </div> */}
+        {/* <input className="a" type="checkbox" /> */}
       </div>
     </div>
   );
