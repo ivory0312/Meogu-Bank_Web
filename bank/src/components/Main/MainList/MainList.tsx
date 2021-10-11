@@ -5,7 +5,11 @@ import Add from "assets/add.svg";
 
 import "./MainList.scss";
 
-const MainList = (props: { title: string; content: string }) => {
+const MainList = (props: {
+  title: string;
+  content: string;
+  isAccount: boolean;
+}) => {
   const { MainListDumi } = useMainList();
   const [isMore, setIsMore] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("165");
@@ -33,7 +37,11 @@ const MainList = (props: { title: string; content: string }) => {
         {MainListDumi.map((data) => {
           return (
             <>
-              <MainListItem name={data.name} price={data.price} />
+              <MainListItem
+                name={data.name}
+                price={data.price}
+                isAccount={props.isAccount}
+              />
             </>
           );
         })}
