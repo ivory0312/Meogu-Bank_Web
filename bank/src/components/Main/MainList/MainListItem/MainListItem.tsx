@@ -19,7 +19,7 @@ const MainListItem = (props: {
               : { backgroundColor: "#F9DC98" }
           }
         >
-          <img src={props.isAccount ? DGB : saving} alt="DGB" />
+          <img src={props.isAccount ? DGB : saving} alt="icon" />
         </div>
         <div className="mainListItem-item-contents">
           <div>{props.name}</div>
