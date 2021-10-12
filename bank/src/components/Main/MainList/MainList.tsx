@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import MainListItem from "components/Main/MainList/MainListItem";
 import useMainList from "hooks/main/useMainList";
 import Add from "assets/add.svg";
+import { useHistory } from "react-router-dom";
 
 import "./MainList.scss";
 
@@ -11,6 +12,7 @@ const MainList = (props: {
   isAccount: boolean;
 }) => {
   const { MainListDumi } = useMainList();
+  const history = useHistory();
   const [isMore, setIsMore] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("165");
   const handleMore = () => {
@@ -24,6 +26,9 @@ const MainList = (props: {
       console.log(height);
     }
   };
+  const handleMenu = useCallback((url: string) => {
+    history.push(url);
+  }, []);
 
   return (
     <div className="mainList">
@@ -46,10 +51,13 @@ const MainList = (props: {
           );
         })}
       </div>
-      <div className="mainListItem">
+      <div
+        className="mainListItem"
+        onClick={() => handleMenu("/create-account")}
+      >
         <div className="mainListItem-item">
           <div className="mainList-icon">
-            <img src={Add} alt="" />
+            <img src={Add} alt="Add" />
           </div>
           <div className="mainList-text">{props.content}</div>
         </div>
