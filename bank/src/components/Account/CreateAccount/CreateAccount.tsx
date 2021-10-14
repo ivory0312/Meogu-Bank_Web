@@ -1,5 +1,6 @@
 import "./CreateAccount.scss";
 import { useState } from "react";
+import isEmpty from "util/isEmpty";
 
 const CreateAccount = () => {
   const [inputs, setInputs] = useState({
@@ -8,22 +9,33 @@ const CreateAccount = () => {
     3: "",
     4: "",
   });
+  const [type, setType] = useState({
+    1: "text",
+    2: "text",
+    3: "text",
+    4: "text",
+  });
 
-  // const hi = (cur: number) => {
-  //   const input = document.getElementById(String(cur + 1));
-
-  //   input?.focus();
-  // };
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const { id } = e.target;
 
-    if (value === "") {
+    if (isEmpty(value)) {
       document.getElementById(String(parseInt(id) - 1))?.focus();
-      console.log(id);
+      if (parseInt(id) > 1) {
+        setType({
+          ...type,
+          [String(parseInt(id) - 1)]: "text",
+        });
+      }
     } else {
       document.getElementById(String(parseInt(id) + 1))?.focus();
-      console.log(id);
+      if (parseInt(id) > 1) {
+        setType({
+          ...type,
+          [String(parseInt(id) - 1)]: "password",
+        });
+      }
     }
     const onlyNumber = value.replace(/[^0-9]/g, "");
 
@@ -49,41 +61,73 @@ const CreateAccount = () => {
             <div className="createAccount-content-input-pw">
               <input
                 id="1"
-                type="text"
+                type={type[1]}
                 value={inputs[1]}
                 maxLength={1}
                 onChange={onChange}
+                autoComplete="off"
               />
               <input
                 id="2"
-                type="text"
+                type={type[2]}
                 value={inputs[2]}
                 maxLength={1}
                 onChange={onChange}
+                autoComplete="off"
               />
               <input
                 id="3"
-                type="text"
+                type={type[3]}
                 value={inputs[3]}
                 maxLength={1}
                 onChange={onChange}
+                autoComplete="off"
               />
               <input
                 id="4"
-                type="text"
+                type={type[4]}
                 value={inputs[4]}
                 maxLength={1}
                 onChange={onChange}
+                autoComplete="off"
               />
             </div>
           </div>
           <div className="createAccount-content-input">
             계좌의 비밀번호를 한 번 더 입력해주세요
             <div className="createAccount-content-input-pw">
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
+              <input
+                id="1"
+                type={type[1]}
+                value={inputs[1]}
+                maxLength={1}
+                onChange={onChange}
+                autoComplete="off"
+              />
+              <input
+                id="2"
+                type={type[2]}
+                value={inputs[2]}
+                maxLength={1}
+                onChange={onChange}
+                autoComplete="off"
+              />
+              <input
+                id="3"
+                type={type[3]}
+                value={inputs[3]}
+                maxLength={1}
+                onChange={onChange}
+                autoComplete="off"
+              />
+              <input
+                id="4"
+                type={type[4]}
+                value={inputs[4]}
+                maxLength={1}
+                onChange={onChange}
+                autoComplete="off"
+              />
             </div>
           </div>
         </div>
