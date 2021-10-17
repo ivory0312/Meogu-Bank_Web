@@ -1,6 +1,7 @@
-import "./CreateAccount.scss";
 import { useState } from "react";
 import isEmpty from "util/isEmpty";
+
+import "./CreateAccount.scss";
 
 const CreateAccount = () => {
   const [inputs, setInputs] = useState({
@@ -8,12 +9,20 @@ const CreateAccount = () => {
     2: "",
     3: "",
     4: "",
+    5: "",
+    6: "",
+    7: "",
+    8: "",
   });
   const [type, setType] = useState({
     1: "text",
     2: "text",
     3: "text",
     4: "text",
+    5: "text",
+    6: "text",
+    7: "text",
+    8: "text",
   });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,33 +106,33 @@ const CreateAccount = () => {
             계좌의 비밀번호를 한 번 더 입력해주세요
             <div className="createAccount-content-input-pw">
               <input
-                id="1"
-                type={type[1]}
-                value={inputs[1]}
+                id="5"
+                type={type[5]}
+                value={inputs[5]}
                 maxLength={1}
                 onChange={onChange}
                 autoComplete="off"
               />
               <input
-                id="2"
-                type={type[2]}
-                value={inputs[2]}
+                id="6"
+                type={type[6]}
+                value={inputs[6]}
                 maxLength={1}
                 onChange={onChange}
                 autoComplete="off"
               />
               <input
-                id="3"
-                type={type[3]}
-                value={inputs[3]}
+                id="7"
+                type={type[7]}
+                value={inputs[7]}
                 maxLength={1}
                 onChange={onChange}
                 autoComplete="off"
               />
               <input
-                id="4"
-                type={type[4]}
-                value={inputs[4]}
+                id="8"
+                type={type[8]}
+                value={inputs[8]}
                 maxLength={1}
                 onChange={onChange}
                 autoComplete="off"
