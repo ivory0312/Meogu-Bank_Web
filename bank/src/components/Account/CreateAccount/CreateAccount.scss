@@ -34,5 +34,24 @@
         }
       }
     }
+    &-button {
+      text-align: right;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--white);
+        background-color: var(--main);
+      }
+    }
   }
+}
+
+.inactive {
+  opacity: 50%;
 }

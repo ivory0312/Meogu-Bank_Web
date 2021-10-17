@@ -25,11 +25,17 @@ const CreateAccount = () => {
     8: "text",
   });
 
+  const checkPassword = () => {
+    return false;
+  };
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const { id } = e.target;
 
     if (isEmpty(value)) {
+      console.log(true);
+
       document.getElementById(String(parseInt(id) - 1))?.focus();
       if (parseInt(id) > 1) {
         setType({
@@ -38,6 +44,8 @@ const CreateAccount = () => {
         });
       }
     } else {
+      console.log(false);
+
       document.getElementById(String(parseInt(id) + 1))?.focus();
       if (parseInt(id) > 1) {
         setType({
@@ -138,6 +146,15 @@ const CreateAccount = () => {
                 autoComplete="off"
               />
             </div>
+          </div>
+          <div
+            className={
+              checkPassword()
+                ? "createAccount-content-button"
+                : "createAccount-content-button inactive"
+            }
+          >
+            <button>확인</button>
           </div>
         </div>
       </div>
