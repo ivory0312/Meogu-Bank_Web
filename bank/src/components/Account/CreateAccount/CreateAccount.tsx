@@ -75,10 +75,18 @@ const CreateAccount = () => {
     if (e.target.value === "") {
       return;
     }
-    const onlyNumber = e.target.value.replace(/[^0-9]/g, "");
+    const validation = e.target.value.replace(/[^0-9]/g, "");
+
+    switch (e.target.name) {
+      case "firstNumber":
+        break;
+
+      default:
+        break;
+    }
     setCreateAccount({
       ...createAccount,
-      [e.target.name]: onlyNumber,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -102,10 +110,16 @@ const CreateAccount = () => {
           <div className="createAccount-content-input">
             주민등록번호를 입력해주세요
             <div className="createAccount-content-input-residentNumber">
-              <input type="text" maxLength={6} autoComplete="off" />
+              <input
+                type="text"
+                name="firstNumber"
+                maxLength={6}
+                autoComplete="off"
+              />
               <span>-</span>
               <input
                 type={residentNumberType}
+                name="lastNumber"
                 maxLength={7}
                 autoComplete="off"
               />
