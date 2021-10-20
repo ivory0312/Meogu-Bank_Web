@@ -33,6 +33,11 @@ const CreateAccount = () => {
   const [residentNumberType, setResidentNumberType] =
     useState<string>("password");
 
+  const [residentNumber, setResidentNumber] = useState({
+    firstNumber: "",
+    lastNumber: "",
+  });
+
   const checkPassword = () => {
     return false;
   };
@@ -71,23 +76,29 @@ const CreateAccount = () => {
       [id]: onlyNumber,
     });
   };
-  const handleInput = (e: { target: { value: string; name: string } }) => {
-    if (e.target.value === "") {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+    const { value } = e.target;
+
+    if (value === "") {
       return;
     }
-    const validation = e.target.value.replace(/[^0-9]/g, "");
 
-    switch (e.target.name) {
+    switch (name) {
       case "firstNumber":
+        setResidentNumber({
+          ...residentNumber,
+          // firstNumber: value.replace(
+          //   /\d{2}([0]\d|[1][0-2])([0][1-9]|[1-2]\d|[3][0-1])/g,
+          //   ""
+          // ),
+          firstNumber: value.replace(/[^0-9]/g, ""),
+        });
         break;
 
       default:
         break;
     }
-    setCreateAccount({
-      ...createAccount,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -113,6 +124,8 @@ const CreateAccount = () => {
               <input
                 type="text"
                 name="firstNumber"
+                onChange={handleInput}
+                value={residentNumber.firstNumber}
                 maxLength={6}
                 autoComplete="off"
               />
@@ -120,6 +133,7 @@ const CreateAccount = () => {
               <input
                 type={residentNumberType}
                 name="lastNumber"
+                onChange={handleInput}
                 maxLength={7}
                 autoComplete="off"
               />
