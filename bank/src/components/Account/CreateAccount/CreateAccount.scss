@@ -25,6 +25,23 @@
       &-name {
         border-bottom: 1px solid var(--darkStroke);
       }
+      &-residentNumber {
+        border-bottom: 1px solid var(--darkStroke);
+
+        input {
+          width: 75px !important;
+        }
+        span {
+          font-size: 16px;
+          color: var(--black);
+        }
+        button {
+          font-size: 16px;
+          border: none;
+          background: none;
+          cursor: pointer;
+        }
+      }
       &-pw {
         input {
           width: 30px;

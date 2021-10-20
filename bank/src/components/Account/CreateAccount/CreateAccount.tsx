@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import isEmpty from "util/isEmpty";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 import "./CreateAccount.scss";
 
@@ -24,11 +25,19 @@ const CreateAccount = () => {
     7: "text",
     8: "text",
   });
+  const [residentNumberType, setResidentNumberType] =
+    useState<string>("password");
 
   const checkPassword = () => {
     return false;
   };
-
+  const handleResidentNumber = useCallback(() => {
+    if (residentNumberType === "password") {
+      setResidentNumberType("text");
+    } else {
+      setResidentNumberType("password");
+    }
+  }, [residentNumberType]);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const { id } = e.target;
@@ -68,9 +77,34 @@ const CreateAccount = () => {
         <div className="createAccount-title">계좌 개설</div>
         <div className="createAccount-content">
           <div className="createAccount-content-input">
-            계좌 이름을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
+            이름을 입력해주세요
             <div className="createAccount-content-input-name">
-              <input type="text" maxLength={10} />
+              <input type="text" maxLength={5} autoComplete="off" />
+            </div>
+          </div>
+          <div className="createAccount-content-input">
+            주민등록번호를 입력해주세요
+            <div className="createAccount-content-input-residentNumber">
+              <input type="text" maxLength={6} autoComplete="off" />
+              <span>-</span>
+              <input
+                type={residentNumberType}
+                maxLength={7}
+                autoComplete="off"
+              />
+              <button onClick={() => handleResidentNumber()}>
+                {residentNumberType === "password" ? (
+                  <HiOutlineEye />
+                ) : (
+                  <HiOutlineEyeOff />
+                )}
+              </button>
+            </div>
+          </div>
+          <div className="createAccount-content-input">
+            계좌 별명을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
+            <div className="createAccount-content-input-name">
+              <input type="text" maxLength={10} autoComplete="off" />
             </div>
           </div>
           <div className="createAccount-content-input">
