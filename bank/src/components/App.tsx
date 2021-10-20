@@ -1,4 +1,5 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
 
@@ -8,9 +9,11 @@ import "styles/styleVariable/styleVariable.scss";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </RecoilRoot>
     </>
   );
 }

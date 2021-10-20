@@ -1,10 +1,15 @@
 import { useCallback, useState } from "react";
+import { useRecoilState } from "recoil";
 import isEmpty from "util/isEmpty";
+import { createAccountState } from "recoil/account";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import { ICreateAccountTypes } from "types/account.types";
 
 import "./CreateAccount.scss";
 
 const CreateAccount = () => {
+  const [createAccount, setCreateAccount] =
+    useRecoilState<ICreateAccountTypes>(createAccountState);
   const [inputs, setInputs] = useState({
     1: "",
     2: "",
@@ -43,8 +48,6 @@ const CreateAccount = () => {
     const { id } = e.target;
 
     if (isEmpty(value)) {
-      console.log(true);
-
       document.getElementById(String(parseInt(id) - 1))?.focus();
       if (parseInt(id) > 1) {
         setType({
@@ -53,8 +56,6 @@ const CreateAccount = () => {
         });
       }
     } else {
-      console.log(false);
-
       document.getElementById(String(parseInt(id) + 1))?.focus();
       if (parseInt(id) > 1) {
         setType({
@@ -70,6 +71,16 @@ const CreateAccount = () => {
       [id]: onlyNumber,
     });
   };
+  const handleInput = (e: { target: { value: string; name: string } }) => {
+    if (e.target.value === "") {
+      return;
+    }
+    const onlyNumber = e.target.value.replace(/[^0-9]/g, "");
+    setCreateAccount({
+      ...createAccount,
+      [e.target.name]: onlyNumber,
+    });
+  };
 
   return (
     <>
@@ -79,7 +90,13 @@ const CreateAccount = () => {
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
-              <input type="text" maxLength={5} autoComplete="off" />
+              <input
+                name="name"
+                type="text"
+                onChange={handleInput}
+                maxLength={5}
+                autoComplete="off"
+              />
             </div>
           </div>
           <div className="createAccount-content-input">
@@ -104,7 +121,12 @@ const CreateAccount = () => {
           <div className="createAccount-content-input">
             계좌 별명을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
             <div className="createAccount-content-input-name">
-              <input type="text" maxLength={10} autoComplete="off" />
+              <input
+                name="accountName"
+                type="text"
+                maxLength={10}
+                autoComplete="off"
+              />
             </div>
           </div>
           <div className="createAccount-content-input">
