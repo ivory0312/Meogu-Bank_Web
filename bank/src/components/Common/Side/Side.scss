@@ -5,12 +5,25 @@
     display: flex;
 
     &-info {
-      float: left;
       font-size: 18px;
 
+      &-image {
+        float: left;
+        margin-right: 20px;
+
+        img {
+          outline: 1px solid var(--darkStroke);
+          border-radius: 50px;
+        }
+      }
       &-name {
-        font-size: 22px;
-        font-weight: bold;
+        float: left;
+        margin-top: 15px;
+
+        span {
+          font-size: 22px;
+          font-weight: bold;
+        }
       }
     }
   }

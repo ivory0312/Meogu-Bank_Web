@@ -1,8 +1,8 @@
-import profileImage from "assets/defaultProfile.svg";
-import Home from "assets/Home/Home";
-import Money from "assets/Money/Money";
 import { useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import Home from "assets/Home/Home";
+import Money from "assets/Money/Money";
+import defaultProfile from "assets/defaultProfile.svg";
 
 import "./Side.scss";
 
@@ -18,8 +18,11 @@ const Side = (): JSX.Element => {
     <div className="side">
       <div className="side-profile">
         <div className="side-profile-info">
-          <div>
-            <span className="side-profile-info-name">박상아</span> 님,
+          <div className="side-profile-info-image">
+            <img src={defaultProfile} alt="defaultProfile" />
+          </div>
+          <div className="side-profile-info-name">
+            <span>박상아</span> 님, <br />
             안녕하세요!
           </div>
         </div>

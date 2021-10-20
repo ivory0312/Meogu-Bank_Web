@@ -24,7 +24,7 @@ const MainListItem = (props: {
         <div className="mainListItem-item-contents">
           <div>{props.name}</div>
           <div className="mainListItem-item-contents-price">
-            {props.price} 원
+            {props.price.toLocaleString()} 원
           </div>
         </div>
       </div>
