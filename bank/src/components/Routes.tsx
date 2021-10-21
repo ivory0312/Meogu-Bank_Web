@@ -1,8 +1,8 @@
 import { Switch, Route } from "react-router-dom";
-import MainPage from "pages/Main";
-import CreateAccountPage from "pages/CreateAccount";
-import AccountPage from "pages/Account";
-import AddAccountPage from "pages/AddAccount";
+import MainPage from "components/Main";
+import CreateAccountPage from "components/Account/CreateAccount";
+import AccountPage from "components/Account";
+import AddAccountPage from "components/Account/AddAccount";
 
 const Routes = (): JSX.Element => {
   return (
