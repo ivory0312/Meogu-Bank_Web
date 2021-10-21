@@ -37,11 +37,11 @@
 
     &:hover {
       font-weight: bold;
-      color: var(--white);
+      color: var(--text);
       background-color: var(--main);
     }
   }
   &:hover {
-    background-color: #fafafa;
+    background-color: var(--listHover);
   }
 }

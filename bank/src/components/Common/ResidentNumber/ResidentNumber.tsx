@@ -15,7 +15,7 @@ const ResidentNumber = () => {
     }
   }, [residentNumberType]);
   return (
-    <div className="residentNumber">
+    <div>
       <div className="createAccount-content-input-residentNumber">
         <input
           type="text"
@@ -32,9 +32,9 @@ const ResidentNumber = () => {
         />
         <button onClick={() => handleResidentNumber()}>
           {residentNumberType === "password" ? (
-            <HiOutlineEye />
+            <HiOutlineEye className="icon" />
           ) : (
-            <HiOutlineEyeOff />
+            <HiOutlineEyeOff className="icon" />
           )}
         </button>
       </div>

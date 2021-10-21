@@ -4,6 +4,10 @@
   border-radius: 10px;
   background-color: var(--white);
 
+  input {
+    color: var(--black);
+  }
+
   &-title {
     margin-bottom: 25px;
     font-size: 20px;
@@ -62,7 +66,7 @@
         transition: 0.3s;
         font-size: 16px;
         font-weight: bold;
-        color: var(--white);
+        color: var(--text);
         background-color: var(--main);
       }
     }

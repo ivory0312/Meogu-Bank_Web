@@ -2,16 +2,20 @@
   --white: #ffffff;
   --black: #333333;
   --main: #0261ff;
+  --text: #ffffff;
   --darkStroke: #d9d9d9;
   --lightGray: #f2f3f4;
+  --listHover: #fafafa;
   --backGroundColor1: #ebf3fc;
   --backGroundColor2: #f2f3f5;
 }
 
 [data-theme="dark"] {
-  --white: #292929;
+  --white: #1d1d1d;
   --black: #c2c2c2;
   --darkStroke: #686868;
+  --lightGray: #505050;
+  --listHover: #444444;
   --backGroundColor1: #36383b;
   --backGroundColor2: #242424;
 }
