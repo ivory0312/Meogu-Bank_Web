@@ -2,14 +2,20 @@ import DGB from "assets/DGB.svg";
 import saving from "assets/saving.svg";
 
 import "./MainListItem.scss";
+import { useHistory } from "react-router-dom";
 
 const MainListItem = (props: {
   name: string;
   price: number;
   isAccount: boolean;
 }): JSX.Element => {
+  const history = useHistory();
+
+  const handleHistory = () => {
+    history.push("/account");
+  };
   return (
-    <div className="mainListItem">
+    <div className="mainListItem" onClick={handleHistory}>
       <div className="mainListItem-item">
         <div
           className="mainListItem-item-image"

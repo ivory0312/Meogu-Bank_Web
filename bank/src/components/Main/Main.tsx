@@ -1,7 +1,7 @@
-import MainList from "./MainList/MainList";
-import IDefaultProfile from "assets/IDefaultProfile";
 import { useRecoilValue } from "recoil";
 import { darkModeState } from "recoil/darkMode";
+import MainList from "./MainList/MainList";
+import IDefaultProfile from "assets/IDefaultProfile";
 
 import "./Main.scss";
 

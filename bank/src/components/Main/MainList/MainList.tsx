@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
+import { useHistory } from "react-router-dom";
 import MainListItem from "components/Main/MainList/MainListItem";
 import useMainList from "hooks/main/useMainList";
 import Add from "assets/add.svg";
-import { useHistory } from "react-router-dom";
 
 import "./MainList.scss";
 
@@ -13,17 +13,17 @@ const MainList = (props: {
 }) => {
   const { MainListDumi } = useMainList();
   const history = useHistory();
+
   const [isMore, setIsMore] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("165");
+
   const handleMore = () => {
     if (isMore) {
       setIsMore(false);
       setHeight("165");
-      console.log(height);
     } else {
       setIsMore(true);
       setHeight(String(85 * MainListDumi.length));
-      console.log(height);
     }
   };
   const handleMenu = useCallback((url: string) => {
