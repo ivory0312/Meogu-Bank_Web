@@ -242,6 +242,9 @@ const CreateAccount = () => {
           </div>
         </div>
       </div>
+      <div className="findAccountText">
+        이미 계좌가 있으신가요? <span>계좌 찾기</span>
+      </div>
     </>
   );
 };

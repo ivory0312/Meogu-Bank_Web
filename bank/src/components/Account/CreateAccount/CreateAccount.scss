@@ -72,3 +72,17 @@
 .inactive {
   opacity: 50%;
 }
+
+.findAccountText {
+  text-align: center;
+  color: var(--main);
+
+  span {
+    color: var(--main);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
