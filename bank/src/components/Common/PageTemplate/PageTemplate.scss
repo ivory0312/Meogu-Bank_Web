@@ -1,15 +1,2 @@
 .pageTemplate {
-  &-side {
-    position: fixed;
-    float: left;
-    width: 330px;
-    height: 100vh;
-    border-radius: 0 20px 20px 0;
-    background-color: var(--white);
-  }
-  &-contents {
-    float: left;
-    width: calc(100% - 330px);
-    margin-left: 330px;
-  }
 }
