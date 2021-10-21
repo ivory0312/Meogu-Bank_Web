@@ -1,13 +1,18 @@
 import { useCallback, useState } from "react";
 import { useRecoilState } from "recoil";
+import { useHistory } from "react-router-dom";
 import isEmpty from "util/isEmpty";
 import { createAccountState } from "recoil/account";
-import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { ICreateAccountTypes } from "types/account.types";
+import useAccount from "hooks/Account/useAccount";
+import ResidentNumber from "components/Common/ResidentNumber";
 
 import "./CreateAccount.scss";
 
 const CreateAccount = () => {
+  const history = useHistory();
+  const { checkPassword } = useAccount();
+
   const [createAccount, setCreateAccount] =
     useRecoilState<ICreateAccountTypes>(createAccountState);
   const [inputs, setInputs] = useState({
@@ -30,24 +35,16 @@ const CreateAccount = () => {
     7: "text",
     8: "text",
   });
-  const [residentNumberType, setResidentNumberType] =
-    useState<string>("password");
 
   const [residentNumber, setResidentNumber] = useState({
     firstNumber: "",
     lastNumber: "",
   });
 
-  const checkPassword = () => {
-    return false;
-  };
-  const handleResidentNumber = useCallback(() => {
-    if (residentNumberType === "password") {
-      setResidentNumberType("text");
-    } else {
-      setResidentNumberType("password");
-    }
-  }, [residentNumberType]);
+  const handleHistory = useCallback((url: string) => {
+    history.push(url);
+  }, []);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const { id } = e.target;
@@ -120,31 +117,7 @@ const CreateAccount = () => {
           </div>
           <div className="createAccount-content-input">
             주민등록번호를 입력해주세요
-            <div className="createAccount-content-input-residentNumber">
-              <input
-                type="text"
-                name="firstNumber"
-                onChange={handleInput}
-                value={residentNumber.firstNumber}
-                maxLength={6}
-                autoComplete="off"
-              />
-              <span>-</span>
-              <input
-                type={residentNumberType}
-                name="lastNumber"
-                onChange={handleInput}
-                maxLength={7}
-                autoComplete="off"
-              />
-              <button onClick={() => handleResidentNumber()}>
-                {residentNumberType === "password" ? (
-                  <HiOutlineEye />
-                ) : (
-                  <HiOutlineEyeOff />
-                )}
-              </button>
-            </div>
+            <ResidentNumber />
           </div>
           <div className="createAccount-content-input">
             계좌 별명을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
@@ -242,8 +215,12 @@ const CreateAccount = () => {
           </div>
         </div>
       </div>
-      <div className="findAccountText">
-        이미 계좌가 있으신가요? <span>계좌 찾기</span>
+      <div
+        className="findAccountText"
+        onClick={() => handleHistory("/add-account")}
+      >
+        이미 계좌가 있으신가요?
+        <span> 계좌 찾기</span>
       </div>
     </>
   );

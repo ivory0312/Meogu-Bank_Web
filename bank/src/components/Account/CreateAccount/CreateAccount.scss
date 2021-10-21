@@ -76,10 +76,10 @@
 .findAccountText {
   text-align: center;
   color: var(--main);
+  cursor: pointer;
 
   span {
     color: var(--main);
-    cursor: pointer;
 
     &:hover {
       text-decoration: underline;
