@@ -4,6 +4,8 @@ interface IStyleVariable {
   main: string;
   darkStroke: string;
   lightGray: string;
+  backGroundColor1: string;
+  backGroundColor2: string;
 }
 
 export const styleVariable: IStyleVariable = {
@@ -12,4 +14,6 @@ export const styleVariable: IStyleVariable = {
   main: "#0261FF",
   darkStroke: "#d9d9d9",
   lightGray: "#f2f3f4",
+  backGroundColor1: "#ebf3fc",
+  backGroundColor2: "#f2f3f5",
 };

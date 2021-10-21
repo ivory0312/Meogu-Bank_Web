@@ -21,7 +21,7 @@ body,
   width: 100%;
   min-height: 100vh;
   max-width: 100vw;
-  background: linear-gradient(#ebf3fc, #f2f3f5);
+  background: linear-gradient(var(--backGroundColor1), var(--backGroundColor2));
 }
 
 body {

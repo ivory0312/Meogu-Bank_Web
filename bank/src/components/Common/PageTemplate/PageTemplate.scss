@@ -1,2 +1,24 @@
-.pageTemplate {
+.darkModeButton {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 40px;
+  height: 37px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 50px 0 0 50px;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--white);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--black);
+
+  &:hover {
+    width: 125px;
+  }
+  &-icon {
+    margin-right: 5px !important;
+  }
 }
