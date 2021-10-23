@@ -45,6 +45,7 @@ const MainList = (props: {
               <MainListItem
                 name={data.name}
                 price={data.price}
+                image={data.image}
                 isAccount={props.isAccount}
               />
             </>

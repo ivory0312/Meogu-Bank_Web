@@ -8,6 +8,7 @@ const MainListItem = (props: {
   name: string;
   price: number;
   isAccount: boolean;
+  image: string;
 }): JSX.Element => {
   const history = useHistory();
 
@@ -19,13 +20,9 @@ const MainListItem = (props: {
       <div className="mainListItem-item">
         <div
           className="mainListItem-item-image"
-          style={
-            props.isAccount
-              ? { backgroundColor: "#0261FF" }
-              : { backgroundColor: "#F9DC98" }
-          }
+          style={{ backgroundColor: "#F9DC98" }}
         >
-          <img src={props.isAccount ? DGB : saving} alt="icon" />
+          <img src={props.isAccount ? props.image : saving} alt="icon" />
         </div>
         <div className="mainListItem-item-contents">
           <div>{props.name}</div>

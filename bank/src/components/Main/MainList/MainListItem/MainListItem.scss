@@ -16,6 +16,11 @@
       justify-content: center;
       align-items: center;
       border-radius: 50px;
+
+      img {
+        width: 55px;
+        border-radius: 50px;
+      }
     }
     &-contents {
       margin-left: 10px;
