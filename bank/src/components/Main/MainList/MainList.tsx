@@ -11,7 +11,7 @@ const MainList = (props: {
   content: string;
   isAccount: boolean;
 }) => {
-  const { MainListDumi } = useMainList();
+  const { MainListDummy } = useMainList();
   const history = useHistory();
 
   const [isMore, setIsMore] = useState<boolean>(false);
@@ -23,7 +23,7 @@ const MainList = (props: {
       setHeight("165");
     } else {
       setIsMore(true);
-      setHeight(String(85 * MainListDumi.length));
+      setHeight(String(85 * MainListDummy.length));
     }
   };
   const handleMenu = useCallback((url: string) => {
@@ -39,10 +39,11 @@ const MainList = (props: {
         </div>
       </div>
       <div className="mainList-content" style={{ height: `${height}px` }}>
-        {MainListDumi.map((data) => {
+        {MainListDummy.map((data) => {
           return (
             <>
               <MainListItem
+                idx={data.idx}
                 name={data.name}
                 price={data.price}
                 image={data.image}

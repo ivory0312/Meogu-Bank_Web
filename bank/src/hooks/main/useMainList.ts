@@ -1,5 +1,5 @@
 const useMainList = () => {
-  const MainListDumi = [
+  const MainListDummy = [
     {
       idx: 1,
       name: "계좌 1",
@@ -59,7 +59,7 @@ const useMainList = () => {
   ];
 
   return {
-    MainListDumi,
+    MainListDummy,
   };
 };
 

@@ -5,6 +5,7 @@ import "./MainListItem.scss";
 import { useHistory } from "react-router-dom";
 
 const MainListItem = (props: {
+  idx: number;
   name: string;
   price: number;
   isAccount: boolean;
@@ -12,11 +13,11 @@ const MainListItem = (props: {
 }): JSX.Element => {
   const history = useHistory();
 
-  const handleHistory = () => {
-    history.push("/account");
+  const handleHistory = (idx: number) => {
+    history.push(`/account/${idx}`);
   };
   return (
-    <div className="mainListItem" onClick={handleHistory}>
+    <div className="mainListItem" onClick={() => handleHistory(props.idx)}>
       <div className="mainListItem-item">
         <div
           className="mainListItem-item-image"
