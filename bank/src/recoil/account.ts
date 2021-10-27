@@ -12,3 +12,8 @@ export const createAccountState = atom<ICreateAccountTypes>({
   key: "createAccountState",
   default: createAccount,
 });
+
+export const activeAccountStat = atom<number>({
+  key: "activeAccountStat",
+  default: 0,
+});

@@ -12,6 +12,7 @@ const Main = (): JSX.Element => {
     <>
       <div className="main">
         <div className="main-profile">
+          
           <div className="main-profile-image">
             <IDefaultProfile color={darkMode ? "#F1F1F3" : "#555555"} />
           </div>
@@ -19,6 +20,7 @@ const Main = (): JSX.Element => {
             <span>박상아</span> 님, <br />
             안녕하세요!
           </div>
+          <div className="main-profile-account">이체하기</div>
         </div>
         <MainList title="계좌" content="계좌를 개설해보세요" isAccount={true} />
         <MainList

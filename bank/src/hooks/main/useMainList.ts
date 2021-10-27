@@ -6,6 +6,7 @@ const useMainList = () => {
       price: 13000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 2,
@@ -13,6 +14,7 @@ const useMainList = () => {
       price: 14000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 3,
@@ -20,6 +22,7 @@ const useMainList = () => {
       price: 15000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 4,
@@ -27,6 +30,7 @@ const useMainList = () => {
       price: 10000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 5,
@@ -34,6 +38,7 @@ const useMainList = () => {
       price: 13000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 6,
@@ -41,6 +46,7 @@ const useMainList = () => {
       price: 14000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 7,
@@ -48,6 +54,7 @@ const useMainList = () => {
       price: 15000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
     {
       idx: 8,
@@ -55,6 +62,7 @@ const useMainList = () => {
       price: 10000,
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
+      accountNumber: "3333-01-1234567",
     },
   ];
 

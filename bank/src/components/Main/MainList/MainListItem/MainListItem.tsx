@@ -1,8 +1,9 @@
-import DGB from "assets/DGB.svg";
 import saving from "assets/saving.svg";
+import { useHistory } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { activeAccountStat } from "recoil/account";
 
 import "./MainListItem.scss";
-import { useHistory } from "react-router-dom";
 
 const MainListItem = (props: {
   idx: number;
@@ -12,8 +13,10 @@ const MainListItem = (props: {
   image: string;
 }): JSX.Element => {
   const history = useHistory();
+  const setActiveAccount = useSetRecoilState<number>(activeAccountStat);
 
   const handleHistory = (idx: number) => {
+    setActiveAccount(idx);
     history.push(`/account/${idx}`);
   };
   return (
