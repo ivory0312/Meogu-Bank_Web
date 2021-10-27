@@ -17,7 +17,7 @@ const MainListItem = (props: {
 
   const handleHistory = (idx: number) => {
     setActiveAccount(idx);
-    history.push(`/account/${idx}`);
+    history.push(`/account`);
   };
   return (
     <div className="mainListItem" onClick={() => handleHistory(props.idx)}>

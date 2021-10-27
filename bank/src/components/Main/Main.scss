@@ -1,33 +1,47 @@
 .main {
   padding: 50px;
 
-  &-profile {
+  &-header {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 25px;
     padding: 20px;
     background-color: var(--white);
     border-radius: 10px;
 
-    &-image {
-      float: left;
-      margin-right: 20px;
+    &-profile {
+      &-image {
+        float: left;
+        margin-right: 20px;
 
-      img {
-        outline: 1px solid var(--darkStroke);
-        border-radius: 50px;
+        img {
+          outline: 1px solid var(--darkStroke);
+          border-radius: 50px;
+        }
       }
-    }
-    &-name {
-      float: left;
-      margin-top: 20px;
+      &-name {
+        float: left;
+        margin-top: 20px;
 
-      span {
-        font-size: 22px;
-        font-weight: bold;
+        span {
+          font-size: 22px;
+          font-weight: bold;
+        }
       }
     }
     &-account {
-      
+      margin: 25px 0;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+      background-color: var(--lightGray);
+
+      &:hover {
+        font-weight: bold;
+        color: var(--text);
+        background-color: var(--main);
+      }
     }
   }
 }
