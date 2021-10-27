@@ -1,8 +1,18 @@
 .account {
   height: 100vh;
-  padding: 50px;
+  padding: 20px 50px;
   background-color: var(--white);
 
+  &-home {
+    margin-bottom: 20px;
+    color: var(--main);
+    cursor: pointer;
+
+    span {
+      margin-left: 5px;
+      color: var(--main);
+    }
+  }
   &-title {
     margin-bottom: 15px;
     font-size: 20px;

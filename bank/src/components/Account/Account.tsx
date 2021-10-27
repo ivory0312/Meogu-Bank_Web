@@ -1,20 +1,27 @@
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { activeAccountStat } from "recoil/account";
 import useMainList from "hooks/main/useMainList";
+import { useHistory } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
 import "./Account.scss";
 
 const Account = () => {
-  const [activeAccount, setActiveAccount] =
-    useRecoilState<number>(activeAccountStat);
+  const activeAccount = useRecoilValue<number>(activeAccountStat);
   const { MainListDummy } = useMainList();
   const index: number = activeAccount - 1;
-  console.log(activeAccount);
-  // componentWillUnmount()
-  // setActiveAccount(-1);
+  const history = useHistory();
+
+  const handleHistory = () => {
+    history.push("/");
+  };
 
   return (
     <div className="account">
+      <div className="account-home" onClick={handleHistory}>
+        <IoIosArrowBack />
+        <span>메인 화면으로</span>
+      </div>
       <div className="account-title">계좌 이체</div>
       <div>
         {activeAccount === -1 ? (
