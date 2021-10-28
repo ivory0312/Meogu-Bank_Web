@@ -1,20 +1,16 @@
-import { useCallback, useState } from "react";
-import { useRecoilState } from "recoil";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import isEmpty from "util/isEmpty";
-import { createAccountState } from "recoil/account";
-import { ICreateAccountTypes } from "types/account.types";
 import useAccount from "hooks/Account/useAccount";
 import ResidentNumber from "components/Common/ResidentNumber";
+import useHandleHistory from "hooks/History/useHandleHistory";
+import arrow from "assets/arrow.svg";
 
 import "./CreateAccount.scss";
 
 const CreateAccount = () => {
-  const history = useHistory();
   const { checkPassword } = useAccount();
+  const { handleHistory } = useHandleHistory();
 
-  const [createAccount, setCreateAccount] =
-    useRecoilState<ICreateAccountTypes>(createAccountState);
   const [inputs, setInputs] = useState({
     1: "",
     2: "",
@@ -40,10 +36,6 @@ const CreateAccount = () => {
     firstNumber: "",
     lastNumber: "",
   });
-
-  const handleHistory = useCallback((url: string) => {
-    history.push(url);
-  }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -85,10 +77,6 @@ const CreateAccount = () => {
       case "firstNumber":
         setResidentNumber({
           ...residentNumber,
-          // firstNumber: value.replace(
-          //   /\d{2}([0]\d|[1][0-2])([0][1-9]|[1-2]\d|[3][0-1])/g,
-          //   ""
-          // ),
           firstNumber: value.replace(/[^0-9]/g, ""),
         });
         break;
@@ -101,8 +89,12 @@ const CreateAccount = () => {
   return (
     <>
       <div className="createAccount">
-        <div className="createAccount-title">계좌 개설</div>
+        <span className="createAccount-home" onClick={() => handleHistory("/")}>
+          <img src={arrow} alt="arrow" />
+          <span>메인 화면으로</span>
+        </span>
         <div className="createAccount-content">
+          <div className="createAccount-content-title">계좌 개설</div>
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">

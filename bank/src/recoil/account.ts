@@ -1,8 +1,8 @@
 import { atom } from "recoil";
-import { ICreateAccountTypes } from "types/account.types";
+import { IAccountDataTypes, ICreateAccountTypes } from "types/account.types";
 
 export const createAccount: ICreateAccountTypes = {
-  name: "",
+  bank: "",
   residentNumber: "",
   accountName: "",
   password: "",
@@ -15,5 +15,15 @@ export const createAccountState = atom<ICreateAccountTypes>({
 
 export const activeAccountStat = atom<number>({
   key: "activeAccountStat",
-  default: -1,
+  default: 0,
+});
+
+export const accountData = {
+  bank: "",
+  accountNumber: "",
+  price: "",
+};
+export const accountDataState = atom<IAccountDataTypes>({
+  key: "accountDataState",
+  default: accountData,
 });

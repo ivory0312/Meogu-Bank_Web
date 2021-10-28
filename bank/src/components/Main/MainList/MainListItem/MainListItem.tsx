@@ -1,7 +1,5 @@
 import saving from "assets/saving.svg";
-import { useHistory } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { activeAccountStat } from "recoil/account";
+import useHandleHistory from "hooks/History/useHandleHistory";
 
 import "./MainListItem.scss";
 
@@ -12,15 +10,13 @@ const MainListItem = (props: {
   isAccount: boolean;
   image: string;
 }): JSX.Element => {
-  const history = useHistory();
-  const setActiveAccount = useSetRecoilState<number>(activeAccountStat);
+  const { handleHistory } = useHandleHistory();
 
-  const handleHistory = (idx: number) => {
-    setActiveAccount(idx);
-    history.push(`/account`);
-  };
   return (
-    <div className="mainListItem" onClick={() => handleHistory(props.idx)}>
+    <div
+      className="mainListItem"
+      onClick={() => handleHistory(`/account/${props.idx - 1}`)}
+    >
       <div className="mainListItem-item">
         <div
           className="mainListItem-item-image"

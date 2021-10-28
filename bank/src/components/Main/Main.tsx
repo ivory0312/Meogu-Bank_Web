@@ -1,21 +1,12 @@
-import { useHistory } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { darkModeState } from "recoil/darkMode";
 import IDefaultProfile from "assets/IDefaultProfile";
 import MainList from "./MainList/MainList";
-import { activeAccountStat } from "recoil/account";
 
 import "./Main.scss";
 
 const Main = (): JSX.Element => {
   const darkMode = useRecoilValue<boolean>(darkModeState);
-  const history = useHistory();
-  const setActiveAccount = useSetRecoilState<number>(activeAccountStat);
-
-  const handleHistory = () => {
-    setActiveAccount(-1);
-    history.push("/account");
-  };
 
   return (
     <>
@@ -29,9 +20,6 @@ const Main = (): JSX.Element => {
               <span>박상아</span> 님, <br />
               안녕하세요!
             </div>
-          </div>
-          <div className="main-header-account" onClick={handleHistory}>
-            이체하기
           </div>
         </div>
         <MainList title="계좌" content="계좌를 개설해보세요" isAccount={true} />

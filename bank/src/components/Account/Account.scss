@@ -1,10 +1,8 @@
 .account {
   height: 100vh;
   padding: 20px 50px;
-  background-color: var(--white);
 
   &-home {
-    margin-bottom: 20px;
     color: var(--main);
     cursor: pointer;
 
@@ -13,16 +11,50 @@
       color: var(--main);
     }
   }
-  &-title {
-    margin-bottom: 15px;
-    font-size: 20px;
-    font-weight: bold;
+  &-content {
+    margin: 20px 0 25px 0;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: var(--white);
+
+    &-title {
+      margin-bottom: 25px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    select {
+      display: flex;
+      width: 150px;
+      margin: 5px 0 15px 0;
+      padding: 10px 0;
+      border: none;
+      border-bottom: 1px solid var(--darkStroke);
+      color: var(--black);
+    }
+    select option:first-child {
+      display: none;
+    }
+    input {
+      display: flex;
+      margin-bottom: 15px;
+      padding: 10px 5px;
+      border: none;
+      border-bottom: 1px solid var(--darkStroke);
+      color: var(--black);
+    }
+    &-price {
+      display: flex;
+
+      span {
+        margin: 13px 0 0 5px;
+      }
+    }
   }
   &-info {
     display: flex;
     padding: 25px;
     border-radius: 10px;
-    background-color: var(--backGroundColor1);
+    background-color: var(--white);
 
     img {
       width: 50px;

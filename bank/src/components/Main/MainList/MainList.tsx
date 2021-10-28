@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { useHistory } from "react-router-dom";
 import MainListItem from "components/Main/MainList/MainListItem";
 import useMainList from "hooks/main/useMainList";
 import Add from "assets/add.svg";
+import useHandleHistory from "hooks/History/useHandleHistory";
 
 import "./MainList.scss";
 
@@ -12,7 +12,7 @@ const MainList = (props: {
   isAccount: boolean;
 }) => {
   const { MainListDummy } = useMainList();
-  const history = useHistory();
+  const { handleHistory } = useHandleHistory();
 
   const [isMore, setIsMore] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("165");
@@ -26,16 +26,13 @@ const MainList = (props: {
       setHeight(String(85 * MainListDummy.length));
     }
   };
-  const handleMenu = useCallback((url: string) => {
-    history.push(url);
-  }, []);
 
   return (
     <div className="mainList">
       <div className="mainList-title">
         <div>{props.title}</div>
         <div className="mainList-title-button" onClick={() => handleMore()}>
-          {isMore ? "간략히" : "자세히"}
+          {isMore ? "간략히" : "더보기"}
         </div>
       </div>
       <div className="mainList-content" style={{ height: `${height}px` }}>
@@ -55,7 +52,7 @@ const MainList = (props: {
       </div>
       <div
         className="mainListItem"
-        onClick={() => handleMenu("/create-account")}
+        onClick={() => handleHistory("/create-account")}
       >
         <div className="mainListItem-item">
           <div className="mainList-icon">
