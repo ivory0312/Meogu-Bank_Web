@@ -14,8 +14,8 @@ const AddAccount = () => {
           <img src={arrow} alt="arrow" />
           <span>메인 화면으로</span>
         </span>
-        <div className="createAccount-title">계좌 추가</div>
         <div className="createAccount-content">
+          <div className="createAccount-content-title">계좌 개설</div>
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
@@ -26,6 +26,7 @@ const AddAccount = () => {
             주민등록번호를 입력해주세요
             <ResidentNumber />
           </div>
+
           <div
             className={
               checkPassword()
@@ -39,10 +40,10 @@ const AddAccount = () => {
       </div>
       <div
         className="findAccountText"
-        onClick={() => handleHistory("/add-account")}
+        onClick={() => handleHistory("/create-account")}
       >
-        이미 계좌가 있으신가요?
-        <span> 계좌 찾기</span>
+        계좌가 없으신가요?
+        <span> 계좌 생성</span>
       </div>
     </>
   );

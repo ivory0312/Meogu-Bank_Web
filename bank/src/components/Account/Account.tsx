@@ -23,6 +23,18 @@ const Account = () => {
         <img src={arrow} alt="arrow" />
         <span>메인 화면으로</span>
       </span>
+      <div className="account-info">
+        <img src={MainListDummy[Number(index[2])].image} alt="" />
+        <div className="account-info-name">
+          <div>
+            <span>{MainListDummy[Number(index[2])].name}</span>
+            {MainListDummy[0].accountNumber}
+          </div>
+          <div>
+            잔액 {MainListDummy[Number(index[2])].price.toLocaleString()} 원
+          </div>
+        </div>
+      </div>
       <div className="account-content">
         <div className="account-content-title">계좌 이체</div>
         <span>은행 선택</span>
@@ -40,18 +52,6 @@ const Account = () => {
         <div className="account-content-price">
           <input type="text" maxLength={10} />
           <span>원</span>
-        </div>
-      </div>
-      <div className="account-info">
-        <img src={MainListDummy[Number(index[2])].image} alt="" />
-        <div className="account-info-name">
-          <div>
-            <span>{MainListDummy[Number(index[2])].name}</span>
-            {MainListDummy[0].accountNumber}
-          </div>
-          <div>
-            잔액 {MainListDummy[Number(index[2])].price.toLocaleString()} 원
-          </div>
         </div>
       </div>
     </div>
