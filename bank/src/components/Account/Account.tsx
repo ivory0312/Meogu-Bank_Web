@@ -1,21 +1,28 @@
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import useMainList from "hooks/main/useMainList";
 import { IAccountDataTypes } from "types/account.types";
-import { accountDataState } from "recoil/account";
+import { accountData, accountDataState } from "recoil/account";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
+import useAccount from "hooks/Account/useAccount";
 
 import "./Account.scss";
 
 const Account = () => {
-  const [accountData, setAccounData] =
-    useRecoilState<IAccountDataTypes>(accountDataState);
+  const setAccountData = useSetRecoilState<IAccountDataTypes>(accountDataState);
 
   const { MainListDummy } = useMainList();
   const { handleHistory } = useHandleHistory();
+  const { checkPassword } = useAccount();
   const index: string[] = window.location.pathname.split("/");
 
-  const handleInput = () => {};
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(accountData);
+    setAccountData({
+      ...accountData,
+      [e.target.id]: e.target.value,
+    });
+  };
 
   return (
     <div className="account">
@@ -38,7 +45,7 @@ const Account = () => {
       <div className="account-content">
         <div className="account-content-title">계좌 이체</div>
         <span>은행 선택</span>
-        <select id="bank" onChange={() => alert("hi")}>
+        <select id="bank" onChange={() => handleInput}>
           <option value="">은행을 선택해주세요</option>
           <option value="대구은행">대구은행</option>
           <option value="카카오뱅크">카카오뱅크</option>
@@ -46,12 +53,23 @@ const Account = () => {
           <option value="케이뱅크">케이뱅크</option>
           <option value="부산은행">부산은행</option>
         </select>
-        <span>계좌 번호</span>
-        <input type="text" />
+        <span className="createAccount-content-input">
+          계좌 번호 <span> - 를 제외하고 작성해주세요</span>
+        </span>
+        <input type="text" onChange={() => handleInput} />
         <span>보낼 금액</span>
         <div className="account-content-price">
-          <input type="text" maxLength={10} />
+          <input type="text" maxLength={10} onChange={() => handleInput} />
           <span>원</span>
+        </div>
+        <div
+          className={
+            checkPassword()
+              ? "createAccount-content-button"
+              : "createAccount-content-button inactive"
+          }
+        >
+          <button>확인</button>
         </div>
       </div>
     </div>
