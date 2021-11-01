@@ -1,4 +1,4 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import useMainList from "hooks/main/useMainList";
 import { IAccountDataTypes } from "types/account.types";
 import { accountData, accountDataState } from "recoil/account";
@@ -9,7 +9,8 @@ import useAccount from "hooks/Account/useAccount";
 import "./Account.scss";
 
 const Account = () => {
-  const setAccountData = useSetRecoilState<IAccountDataTypes>(accountDataState);
+  const [accountData, setAccountData] =
+    useRecoilState<IAccountDataTypes>(accountDataState);
 
   const { MainListDummy } = useMainList();
   const { handleHistory } = useHandleHistory();
@@ -17,7 +18,7 @@ const Account = () => {
   const index: string[] = window.location.pathname.split("/");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(accountData);
+    console.log(e.target.id);
     setAccountData({
       ...accountData,
       [e.target.id]: e.target.value,
@@ -45,7 +46,7 @@ const Account = () => {
       <div className="account-content">
         <div className="account-content-title">계좌 이체</div>
         <span>은행 선택</span>
-        <select id="bank" onChange={() => handleInput}>
+        <select id="bank">
           <option value="">은행을 선택해주세요</option>
           <option value="대구은행">대구은행</option>
           <option value="카카오뱅크">카카오뱅크</option>
@@ -56,10 +57,10 @@ const Account = () => {
         <span className="createAccount-content-input">
           계좌 번호 <span> - 를 제외하고 작성해주세요</span>
         </span>
-        <input type="text" onChange={() => handleInput} />
+        <input type="text" id="accountNumber" onChange={handleInput} />
         <span>보낼 금액</span>
         <div className="account-content-price">
-          <input type="text" maxLength={10} onChange={() => handleInput} />
+          <input type="text" id="price" maxLength={10} onChange={handleInput} />
           <span>원</span>
         </div>
         <div
