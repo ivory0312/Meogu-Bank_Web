@@ -1,7 +1,7 @@
 import { useRecoilState, useSetRecoilState } from "recoil";
 import useMainList from "hooks/main/useMainList";
 import { IAccountDataTypes } from "types/account.types";
-import { accountData, accountDataState } from "recoil/account";
+import { accountDataState } from "recoil/account";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
 import useAccount from "hooks/Account/useAccount";
@@ -18,11 +18,20 @@ const Account = () => {
   const index: string[] = window.location.pathname.split("/");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.id);
     setAccountData({
       ...accountData,
       [e.target.id]: e.target.value,
     });
+  };
+  const handleSelect = (e: any) => {
+    setAccountData({
+      ...accountData,
+      bank: e.target.value,
+    });
+  };
+
+  const a = () => {
+    console.log(accountData);
   };
 
   return (
@@ -46,7 +55,7 @@ const Account = () => {
       <div className="account-content">
         <div className="account-content-title">계좌 이체</div>
         <span>은행 선택</span>
-        <select id="bank">
+        <select id="bank" onChange={handleSelect}>
           <option value="">은행을 선택해주세요</option>
           <option value="대구은행">대구은행</option>
           <option value="카카오뱅크">카카오뱅크</option>
@@ -70,7 +79,7 @@ const Account = () => {
               : "createAccount-content-button inactive"
           }
         >
-          <button>확인</button>
+          <button onClick={a}>확인</button>
         </div>
       </div>
     </div>
