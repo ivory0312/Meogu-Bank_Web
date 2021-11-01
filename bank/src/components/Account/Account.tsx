@@ -7,6 +7,7 @@ import arrow from "assets/arrow.svg";
 import useAccount from "hooks/Account/useAccount";
 
 import "./Account.scss";
+import isEmpty from "../../util/isEmpty";
 
 const Account = () => {
   const [accountData, setAccountData] =
@@ -30,8 +31,10 @@ const Account = () => {
     });
   };
 
-  const a = () => {
-    console.log(accountData);
+  const handleButton = () => {
+    if (isEmpty(accountData.accountNumber && accountData.bank && accountData)) {
+      console.log("isEmpty");
+    }
   };
 
   return (
@@ -79,7 +82,7 @@ const Account = () => {
               : "createAccount-content-button inactive"
           }
         >
-          <button onClick={a}>확인</button>
+          <button onClick={handleButton}>확인</button>
         </div>
       </div>
     </div>
