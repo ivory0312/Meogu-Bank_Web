@@ -32,12 +32,7 @@ const CreateAccount = () => {
     8: "text",
   });
 
-  const [residentNumber, setResidentNumber] = useState({
-    firstNumber: "",
-    lastNumber: "",
-  });
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const { id } = e.target;
 
@@ -65,25 +60,8 @@ const CreateAccount = () => {
       [id]: onlyNumber,
     });
   };
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name } = e.target;
-    const { value } = e.target;
-
-    if (value === "") {
-      return;
-    }
-
-    switch (name) {
-      case "firstNumber":
-        setResidentNumber({
-          ...residentNumber,
-          firstNumber: value.replace(/[^0-9]/g, ""),
-        });
-        break;
-
-      default:
-        break;
-    }
+  const handleButton = () => {
+    handleHistory("/");
   };
 
   return (
@@ -98,13 +76,7 @@ const CreateAccount = () => {
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
-              <input
-                name="name"
-                type="text"
-                onChange={handleInput}
-                maxLength={5}
-                autoComplete="off"
-              />
+              <input name="name" type="text" maxLength={5} autoComplete="off" />
             </div>
           </div>
           <div className="createAccount-content-input">
@@ -130,7 +102,7 @@ const CreateAccount = () => {
                 type={type[1]}
                 value={inputs[1]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -138,7 +110,7 @@ const CreateAccount = () => {
                 type={type[2]}
                 value={inputs[2]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -146,7 +118,7 @@ const CreateAccount = () => {
                 type={type[3]}
                 value={inputs[3]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -154,7 +126,7 @@ const CreateAccount = () => {
                 type={type[4]}
                 value={inputs[4]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
             </div>
@@ -167,7 +139,7 @@ const CreateAccount = () => {
                 type={type[5]}
                 value={inputs[5]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -175,7 +147,7 @@ const CreateAccount = () => {
                 type={type[6]}
                 value={inputs[6]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -183,7 +155,7 @@ const CreateAccount = () => {
                 type={type[7]}
                 value={inputs[7]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
               <input
@@ -191,7 +163,7 @@ const CreateAccount = () => {
                 type={type[8]}
                 value={inputs[8]}
                 maxLength={1}
-                onChange={onChange}
+                onChange={handleInput}
                 autoComplete="off"
               />
             </div>
@@ -203,7 +175,7 @@ const CreateAccount = () => {
                 : "createAccount-content-button inactive"
             }
           >
-            <button>확인</button>
+            <button onClick={handleButton}>확인</button>
           </div>
         </div>
       </div>

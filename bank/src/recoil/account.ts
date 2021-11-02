@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import { IAccountDataTypes, ICreateAccountTypes } from "types/account.types";
 
 export const createAccount: ICreateAccountTypes = {
-  bank: "",
+  name: "",
   residentNumber: "",
   accountName: "",
   password: "",

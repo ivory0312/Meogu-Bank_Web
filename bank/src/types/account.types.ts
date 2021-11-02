@@ -1,5 +1,5 @@
 export interface ICreateAccountTypes {
-  bank: string;
+  name: string;
   residentNumber: string;
   accountName: string;
   password: string;
