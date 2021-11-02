@@ -6,6 +6,7 @@ import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
 import useAccount from "hooks/Account/useAccount";
 import isEmpty from "util/isEmpty";
+import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
 
 import "./Account.scss";
 
@@ -101,6 +102,8 @@ const Account = () => {
           />
           <span>원</span>
         </div>
+        <span>계좌 비밀번호</span>
+        <PasswordInput />
         <div
           className={
             checkPassword()
