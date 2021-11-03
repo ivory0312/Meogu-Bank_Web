@@ -1,65 +1,15 @@
-import { useState } from "react";
-import isEmpty from "util/isEmpty";
 import useAccount from "hooks/Account/useAccount";
 import ResidentNumber from "components/Common/ResidentNumber";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
 
 import "./CreateAccount.scss";
+import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
 
 const CreateAccount = () => {
   const { checkPassword } = useAccount();
   const { handleHistory } = useHandleHistory();
 
-  const [inputs, setInputs] = useState({
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: "",
-    6: "",
-    7: "",
-    8: "",
-  });
-  const [type, setType] = useState({
-    1: "text",
-    2: "text",
-    3: "text",
-    4: "text",
-    5: "text",
-    6: "text",
-    7: "text",
-    8: "text",
-  });
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const { id } = e.target;
-
-    if (isEmpty(value)) {
-      document.getElementById(String(parseInt(id) - 1))?.focus();
-      if (parseInt(id) > 1) {
-        setType({
-          ...type,
-          [String(parseInt(id) - 1)]: "text",
-        });
-      }
-    } else {
-      document.getElementById(String(parseInt(id) + 1))?.focus();
-      if (parseInt(id) > 1) {
-        setType({
-          ...type,
-          [String(parseInt(id) - 1)]: "password",
-        });
-      }
-    }
-    const onlyNumber = value.replace(/[^0-9]/g, "");
-
-    setInputs({
-      ...inputs,
-      [id]: onlyNumber,
-    });
-  };
   const handleButton = () => {
     handleHistory("/");
   };
@@ -96,77 +46,11 @@ const CreateAccount = () => {
           </div>
           <div className="createAccount-content-input">
             계좌의 비밀번호를 입력해주세요
-            <div className="createAccount-content-input-pw">
-              <input
-                id="1"
-                type={type[1]}
-                value={inputs[1]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="2"
-                type={type[2]}
-                value={inputs[2]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="3"
-                type={type[3]}
-                value={inputs[3]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="4"
-                type={type[4]}
-                value={inputs[4]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-            </div>
+            <PasswordInput />
           </div>
           <div className="createAccount-content-input">
             계좌의 비밀번호를 한 번 더 입력해주세요
-            <div className="createAccount-content-input-pw">
-              <input
-                id="5"
-                type={type[5]}
-                value={inputs[5]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="6"
-                type={type[6]}
-                value={inputs[6]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="7"
-                type={type[7]}
-                value={inputs[7]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-              <input
-                id="8"
-                type={type[8]}
-                value={inputs[8]}
-                maxLength={1}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-            </div>
+            <PasswordInput />
           </div>
           <div
             className={

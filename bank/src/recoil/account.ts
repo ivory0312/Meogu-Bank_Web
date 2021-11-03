@@ -1,5 +1,9 @@
 import { atom } from "recoil";
-import { IAccountDataTypes, ICreateAccountTypes } from "types/account.types";
+import {
+  IAccountDataTypes,
+  ICreateAccountTypes,
+  IPasswordDataTypes,
+} from "types/account.types";
 
 export const createAccount: ICreateAccountTypes = {
   name: "",
@@ -23,7 +27,18 @@ export const accountData = {
   accountNumber: "",
   price: "",
 };
+
 export const accountDataState = atom<IAccountDataTypes>({
   key: "accountDataState",
   default: accountData,
+});
+
+export const passwordData: IPasswordDataTypes = {
+  password: [],
+  checkPassword: [],
+};
+
+export const passwordDataStat = atom<IPasswordDataTypes>({
+  key: "passwordDataState",
+  default: passwordData,
 });

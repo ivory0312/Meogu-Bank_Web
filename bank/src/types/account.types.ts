@@ -10,3 +10,8 @@ export interface IAccountDataTypes {
   accountNumber: string;
   price: string;
 }
+
+export interface IPasswordDataTypes {
+  password: string[];
+  checkPassword: string[];
+}

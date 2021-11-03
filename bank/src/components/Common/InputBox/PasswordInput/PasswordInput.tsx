@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import isEmpty from "util/isEmpty";
 
 import "./PasswordInput.scss";
+import { useRecoilState } from "recoil";
+import { passwordDataStat } from "recoil/account";
 
 const PasswordInput = () => {
   const [inputs, setInputs] = useState({
@@ -17,10 +19,14 @@ const PasswordInput = () => {
     4: "text",
   });
 
-  const passwordData: any[] = [];
+  const [passwordData, setPasswordData] = useRecoilState(passwordDataStat);
+
+  const password: any[] = [];
 
   useEffect(() => {
-    console.log(inputs);
+    Object.entries(inputs).map(([key, value]) => password.push(value));
+    setPasswordData({ ...passwordData, password: password });
+    console.log(passwordData);
   }, [inputs]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
