@@ -11,11 +11,6 @@ const useAccount = () => {
     ) {
       return true;
     }
-    console.log(
-      idx,
-      MainListDummy[idx].password,
-      passwordArray.toString().replace(/\,/g, "")
-    );
 
     return false;
   };
