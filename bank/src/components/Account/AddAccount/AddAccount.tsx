@@ -15,7 +15,7 @@ const AddAccount = () => {
           <span>메인 화면으로</span>
         </span>
         <div className="createAccount-content">
-          <div className="createAccount-content-title">계좌 개설</div>
+          <div className="createAccount-content-title">계좌 찾기</div>
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
@@ -38,12 +38,11 @@ const AddAccount = () => {
           </div>
         </div>
       </div>
-      <div
-        className="findAccountText"
-        onClick={() => handleHistory("/create-account")}
-      >
-        계좌가 없으신가요?
-        <span> 계좌 생성</span>
+      <div className="findAccountText">
+        <span onClick={() => handleHistory("/create-account")}>
+          계좌가 없으신가요?
+          <span> 계좌 생성</span>
+        </span>
       </div>
     </>
   );

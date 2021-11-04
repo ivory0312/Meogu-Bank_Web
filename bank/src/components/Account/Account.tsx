@@ -103,7 +103,7 @@ const Account = () => {
           <span>원</span>
         </div>
         <span>계좌 비밀번호</span>
-        <PasswordInput />
+        <PasswordInput isCheck={false} />
         <div
           className={
             checkPassword()

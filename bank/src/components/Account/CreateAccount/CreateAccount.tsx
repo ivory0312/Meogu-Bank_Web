@@ -46,11 +46,11 @@ const CreateAccount = () => {
           </div>
           <div className="createAccount-content-input">
             계좌의 비밀번호를 입력해주세요
-            <PasswordInput />
+            <PasswordInput isCheck={false} />
           </div>
           <div className="createAccount-content-input">
             계좌의 비밀번호를 한 번 더 입력해주세요
-            <PasswordInput />
+            <PasswordInput isCheck={true} />
           </div>
           <div
             className={
@@ -63,12 +63,11 @@ const CreateAccount = () => {
           </div>
         </div>
       </div>
-      <div
-        className="findAccountText"
-        onClick={() => handleHistory("/add-account")}
-      >
-        이미 계좌가 있으신가요?
-        <span> 계좌 찾기</span>
+      <div className="findAccountText">
+        <span onClick={() => handleHistory("/add-account")}>
+          이미 계좌가 있으신가요?
+          <span> 계좌 찾기</span>
+        </span>
       </div>
     </>
   );

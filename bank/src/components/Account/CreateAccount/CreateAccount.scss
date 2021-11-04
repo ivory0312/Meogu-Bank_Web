@@ -91,9 +91,9 @@
 .findAccountText {
   text-align: center;
   color: var(--main);
-  cursor: pointer;
 
   span {
+    cursor: pointer;
     color: var(--main);
 
     &:hover {
