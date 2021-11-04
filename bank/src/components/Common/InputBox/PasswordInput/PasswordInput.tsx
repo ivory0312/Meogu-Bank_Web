@@ -13,10 +13,10 @@ const PasswordInput = (props: { isCheck: boolean }) => {
     4: "",
   });
   const [checkInput, setCheckInput] = useState({
-    1: "",
-    2: "",
-    3: "",
-    4: "",
+    5: "",
+    6: "",
+    7: "",
+    8: "",
   });
   const [type, setType] = useState({
     1: "text",
@@ -24,16 +24,28 @@ const PasswordInput = (props: { isCheck: boolean }) => {
     3: "text",
     4: "text",
   });
+  const [checkType, setCheckType] = useState({
+    5: "text",
+    6: "text",
+    7: "text",
+    8: "text",
+  });
 
   const [passwordData, setPasswordData] = useRecoilState(passwordDataStat);
 
   const password: any[] = [];
+  const checkPassword: any[] = [];
 
   useEffect(() => {
-    Object.entries(inputs).map(([key, value]) => password.push(value));
-    setPasswordData({ ...passwordData, password: password });
-    console.log(passwordData);
-  }, [inputs]);
+    Object.entries(props.isCheck ? checkInput : inputs).map(([key, value]) =>
+      props.isCheck ? checkPassword.push(value) : password.push(value)
+    );
+    if (props.isCheck) {
+      setPasswordData({ ...passwordData, checkPassword: checkPassword });
+    } else {
+      setPasswordData({ ...passwordData, password: password });
+    }
+  }, [inputs, checkInput]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -42,14 +54,27 @@ const PasswordInput = (props: { isCheck: boolean }) => {
     if (isEmpty(value)) {
       document.getElementById(String(parseInt(id) - 1))?.focus();
       if (parseInt(id) > 1) {
-        setType({
-          ...type,
-          [String(parseInt(id) - 1)]: "text",
-        });
+        if (props.isCheck) {
+          setCheckType({
+            ...checkType,
+            [String(parseInt(id) - 1)]: "text",
+          });
+        } else {
+          setType({
+            ...type,
+            [String(parseInt(id) - 1)]: "text",
+          });
+        }
       }
     } else {
       document.getElementById(String(parseInt(id) + 1))?.focus();
       if (parseInt(id) > 1) {
+        if (props.isCheck) {
+          setCheckType({
+            ...checkType,
+            [String(parseInt(id) - 1)]: "password",
+          });
+        }
         setType({
           ...type,
           [String(parseInt(id) - 1)]: "password",
@@ -58,41 +83,48 @@ const PasswordInput = (props: { isCheck: boolean }) => {
     }
     const onlyNumber = value.replace(/[^0-9]/g, "");
 
-    setInputs({
-      ...inputs,
-      [id]: onlyNumber,
-    });
+    if (props.isCheck) {
+      setCheckInput({
+        ...checkInput,
+        [id]: onlyNumber,
+      });
+    } else {
+      setInputs({
+        ...inputs,
+        [id]: onlyNumber,
+      });
+    }
   };
   return (
     <div className="passwordInput">
       <input
-        id="1"
-        type={type[1]}
-        value={inputs[1]}
+        id={props.isCheck ? "5" : "1"}
+        type={props.isCheck ? checkType[5] : type[1]}
+        value={props.isCheck ? checkInput[5] : inputs[1]}
         maxLength={1}
         onChange={handleInput}
         autoComplete="off"
       />
       <input
-        id="2"
-        type={type[2]}
-        value={inputs[2]}
+        id={props.isCheck ? "6" : "2"}
+        type={props.isCheck ? checkType[6] : type[2]}
+        value={props.isCheck ? checkInput[6] : inputs[2]}
         maxLength={1}
         onChange={handleInput}
         autoComplete="off"
       />
       <input
-        id="3"
-        type={type[3]}
-        value={inputs[3]}
+        id={props.isCheck ? "7" : "3"}
+        type={props.isCheck ? checkType[7] : type[3]}
+        value={props.isCheck ? checkInput[7] : inputs[3]}
         maxLength={1}
         onChange={handleInput}
         autoComplete="off"
       />
       <input
-        id="4"
-        type={type[4]}
-        value={inputs[4]}
+        id={props.isCheck ? "8" : "4"}
+        type={props.isCheck ? checkType[8] : type[4]}
+        value={props.isCheck ? checkInput[8] : inputs[4]}
         maxLength={1}
         onChange={handleInput}
         autoComplete="off"

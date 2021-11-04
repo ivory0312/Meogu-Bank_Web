@@ -2,9 +2,9 @@ import useAccount from "hooks/Account/useAccount";
 import ResidentNumber from "components/Common/ResidentNumber";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
+import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
 
 import "./CreateAccount.scss";
-import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
 
 const CreateAccount = () => {
   const { checkPassword } = useAccount();
