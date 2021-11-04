@@ -1,23 +1,27 @@
-import { useRecoilState, useSetRecoilState } from "recoil";
-import useMainList from "hooks/main/useMainList";
-import { IAccountDataTypes } from "types/account.types";
-import { accountDataState } from "recoil/account";
-import useHandleHistory from "hooks/History/useHandleHistory";
-import arrow from "assets/arrow.svg";
-import useAccount from "hooks/Account/useAccount";
-import isEmpty from "util/isEmpty";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { accountDataState, passwordDataStat } from "recoil/account";
 import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
+import arrow from "assets/arrow.svg";
+import useMainList from "hooks/main/useMainList";
+import useHandleHistory from "hooks/History/useHandleHistory";
+import useAccount from "hooks/Account/useAccount";
+import { IAccountDataTypes } from "types/account.types";
+import isEmpty from "util/isEmpty";
+import isNumber from "util/isNumber";
 
 import "./Account.scss";
 
 const Account = () => {
   const [accountData, setAccountData] =
     useRecoilState<IAccountDataTypes>(accountDataState);
-
+  const passwordData = useRecoilValue(passwordDataStat);
   const { MainListDummy } = useMainList();
   const { handleHistory } = useHandleHistory();
   const { checkPassword } = useAccount();
   const index: string[] = window.location.pathname.split("/");
+  const isValueEmpty = isEmpty(
+    accountData.accountNumber && accountData.bank && accountData.price
+  );
 
   const handleHome = () => {
     handleHistory("/");
@@ -28,10 +32,9 @@ const Account = () => {
     });
   };
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const onlyNumber = e.target.value.replace(/[^0-9]/g, "");
     setAccountData({
       ...accountData,
-      [e.target.id]: onlyNumber,
+      [e.target.id]: isNumber(e.target.value).valueData,
     });
   };
   const handleSelect = (e: any) => {
@@ -42,7 +45,8 @@ const Account = () => {
   };
   const handleButton = () => {
     if (
-      !isEmpty(accountData.accountNumber && accountData.bank && accountData)
+      !isValueEmpty &&
+      checkPassword(passwordData.password, Number(index[2]))
     ) {
       handleHistory("/");
       setAccountData({
@@ -90,6 +94,7 @@ const Account = () => {
           id="accountNumber"
           value={accountData.accountNumber}
           onChange={handleInput}
+          autoComplete="off"
         />
         <span>보낼 금액</span>
         <div className="account-content-price">
@@ -99,6 +104,7 @@ const Account = () => {
             value={accountData.price}
             maxLength={10}
             onChange={handleInput}
+            autoComplete="off"
           />
           <span>원</span>
         </div>
@@ -106,7 +112,7 @@ const Account = () => {
         <PasswordInput isCheck={false} />
         <div
           className={
-            checkPassword()
+            checkPassword(passwordData.password, Number(index[2]))
               ? "createAccount-content-button"
               : "createAccount-content-button inactive"
           }

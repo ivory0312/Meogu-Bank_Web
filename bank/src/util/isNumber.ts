@@ -1,7 +1,8 @@
 const isNumber = (value: string) => {
-  // var regex = /^[0-9]/g;
-  // if (value.replace(regex, "")) return true;
-  return false;
+  const isNumber: boolean = /[^0-9]/g.test(value);
+  const valueData: string = value.replace(/[^0-9]/g, "");
+
+  return { isNumber, valueData };
 };
 
 export default isNumber;

@@ -7,6 +7,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "1111",
     },
     {
       idx: 2,
@@ -15,6 +16,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "2222",
     },
     {
       idx: 3,
@@ -23,6 +25,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "3333",
     },
     {
       idx: 4,
@@ -31,6 +34,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "4444",
     },
     {
       idx: 5,
@@ -39,6 +43,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "5555",
     },
     {
       idx: 6,
@@ -47,6 +52,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "6666",
     },
     {
       idx: 7,
@@ -55,6 +61,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "7777",
     },
     {
       idx: 8,
@@ -63,6 +70,7 @@ const useMainList = () => {
       image:
         "https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png",
       accountNumber: "719-123-123456",
+      password: "8888",
     },
   ];
 

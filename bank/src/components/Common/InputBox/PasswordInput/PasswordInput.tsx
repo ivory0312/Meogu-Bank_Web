@@ -4,6 +4,7 @@ import { passwordDataStat } from "recoil/account";
 import isEmpty from "util/isEmpty";
 
 import "./PasswordInput.scss";
+import isNumber from "../../../../util/isNumber";
 
 const PasswordInput = (props: { isCheck: boolean }) => {
   const [inputs, setInputs] = useState({
@@ -51,50 +52,52 @@ const PasswordInput = (props: { isCheck: boolean }) => {
     const { value } = e.target;
     const { id } = e.target;
 
-    if (isEmpty(value)) {
-      document.getElementById(String(parseInt(id) - 1))?.focus();
-      if (parseInt(id) > 1) {
-        if (props.isCheck) {
-          setCheckType({
-            ...checkType,
-            [String(parseInt(id) - 1)]: "text",
-          });
-        } else {
+    if (!isNumber(value).isNumber) {
+      if (isEmpty(value)) {
+        document.getElementById(String(parseInt(id) - 1))?.focus();
+        if (parseInt(id) > 1) {
+          if (props.isCheck) {
+            setCheckType({
+              ...checkType,
+              [String(parseInt(id) - 1)]: "text",
+            });
+          } else {
+            setType({
+              ...type,
+              [String(parseInt(id) - 1)]: "text",
+            });
+          }
+        }
+      } else {
+        document.getElementById(String(parseInt(id) + 1))?.focus();
+        if (parseInt(id) > 1) {
+          if (props.isCheck) {
+            setCheckType({
+              ...checkType,
+              [String(parseInt(id) - 1)]: "password",
+            });
+          }
           setType({
             ...type,
-            [String(parseInt(id) - 1)]: "text",
-          });
-        }
-      }
-    } else {
-      document.getElementById(String(parseInt(id) + 1))?.focus();
-      if (parseInt(id) > 1) {
-        if (props.isCheck) {
-          setCheckType({
-            ...checkType,
             [String(parseInt(id) - 1)]: "password",
           });
         }
-        setType({
-          ...type,
-          [String(parseInt(id) - 1)]: "password",
-        });
       }
     }
-    const onlyNumber = value.replace(/[^0-9]/g, "");
 
     if (props.isCheck) {
       setCheckInput({
         ...checkInput,
-        [id]: onlyNumber,
+        [id]: isNumber(value).valueData,
       });
     } else {
       setInputs({
         ...inputs,
-        [id]: onlyNumber,
+        [id]: isNumber(value).valueData,
       });
     }
   };
+
   return (
     <div className="passwordInput">
       <input

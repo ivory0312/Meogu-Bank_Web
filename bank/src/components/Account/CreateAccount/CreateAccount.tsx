@@ -53,11 +53,11 @@ const CreateAccount = () => {
             <PasswordInput isCheck={true} />
           </div>
           <div
-            className={
-              checkPassword()
-                ? "createAccount-content-button"
-                : "createAccount-content-button inactive"
-            }
+          // className={
+          //   checkPassword()
+          //     ? "createAccount-content-button"
+          //     : "createAccount-content-button inactive"
+          // }
           >
             <button onClick={handleButton}>확인</button>
           </div>

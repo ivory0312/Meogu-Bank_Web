@@ -28,11 +28,11 @@ const AddAccount = () => {
           </div>
 
           <div
-            className={
-              checkPassword()
-                ? "createAccount-content-button"
-                : "createAccount-content-button inactive"
-            }
+          // className={
+          //   checkPassword()
+          //     ? "createAccount-content-button"
+          //     : "createAccount-content-button inactive"
+          // }
           >
             <button>확인</button>
           </div>
