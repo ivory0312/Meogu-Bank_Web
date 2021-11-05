@@ -3,6 +3,7 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { useRecoilState } from "recoil";
 import { createAccountState } from "recoil/account";
 import { ICreateAccountTypes } from "types/account.types";
+import isNumber from "util/isNumber";
 
 import "./ResidentNumber.scss";
 
@@ -20,12 +21,12 @@ const ResidentNumber = () => {
     if (e.target.id === "firstNumber") {
       setResidentNumber({
         ...residentNumber,
-        firstNumber: e.target.value,
+        firstNumber: isNumber(e.target.value).valueData,
       });
     } else {
       setResidentNumber({
         ...residentNumber,
-        lastNumber: e.target.value,
+        lastNumber: isNumber(e.target.value).valueData,
       });
     }
     setCreateAccount({
@@ -48,6 +49,7 @@ const ResidentNumber = () => {
           type="text"
           id="firstNumber"
           maxLength={6}
+          value={residentNumber.firstNumber}
           onChange={handleInput}
           autoComplete="off"
         />
@@ -55,6 +57,7 @@ const ResidentNumber = () => {
         <input
           type={residentNumberType}
           maxLength={7}
+          value={residentNumber.lastNumber}
           onChange={handleInput}
           autoComplete="off"
         />

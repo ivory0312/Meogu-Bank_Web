@@ -8,6 +8,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { createAccountState, passwordDataStat } from "recoil/account";
 
 import "./CreateAccount.scss";
+import { useEffect } from "react";
 
 const CreateAccount = () => {
   const [createAccount, setCreateAccount] = useRecoilState(createAccountState);
@@ -20,6 +21,17 @@ const CreateAccount = () => {
       createAccount.accountName &&
       createAccount.password
   );
+
+  useEffect(() => {
+    if (
+      checkCreatePassword(passwordData.password, passwordData.checkPassword)
+    ) {
+      setCreateAccount({
+        ...createAccount,
+        password: passwordData.password.join(""),
+      });
+    }
+  }, [passwordData]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCreateAccount({
@@ -39,9 +51,6 @@ const CreateAccount = () => {
         accountName: "",
         password: "",
       });
-      console.log("if", createAccount);
-    } else {
-      console.log("else");
     }
   };
 
@@ -94,6 +103,7 @@ const CreateAccount = () => {
           </div>
           <div
             className={
+              !isValueEmpty &&
               checkCreatePassword(
                 passwordData.password,
                 passwordData.checkPassword

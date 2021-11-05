@@ -16,7 +16,10 @@ const useAccount = () => {
   };
 
   const checkCreatePassword = (value: string[], checkValue: string[]) => {
-    return true;
+    if (value.join("") !== "" && value.join("") === checkValue.join("")) {
+      return true;
+    }
+    return false;
   };
 
   return { checkPassword, checkCreatePassword };
