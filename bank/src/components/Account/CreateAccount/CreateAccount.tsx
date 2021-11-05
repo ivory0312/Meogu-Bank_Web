@@ -3,15 +3,46 @@ import ResidentNumber from "components/Common/ResidentNumber";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
 import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
+import isEmpty from "util/isEmpty";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { createAccountState, passwordDataStat } from "recoil/account";
 
 import "./CreateAccount.scss";
 
 const CreateAccount = () => {
-  const { checkPassword } = useAccount();
+  const [createAccount, setCreateAccount] = useRecoilState(createAccountState);
+  const passwordData = useRecoilValue(passwordDataStat);
+  const { checkCreatePassword } = useAccount();
   const { handleHistory } = useHandleHistory();
+  const isValueEmpty: boolean = isEmpty(
+    createAccount.name &&
+      createAccount.residentNumber &&
+      createAccount.accountName &&
+      createAccount.password
+  );
 
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCreateAccount({
+      ...createAccount,
+      [e.target.id]: e.target.value,
+    });
+  };
   const handleButton = () => {
-    handleHistory("/");
+    if (
+      !isValueEmpty &&
+      checkCreatePassword(passwordData.password, passwordData.checkPassword)
+    ) {
+      handleHistory("/");
+      setCreateAccount({
+        name: "",
+        residentNumber: "",
+        accountName: "",
+        password: "",
+      });
+      console.log("if", createAccount);
+    } else {
+      console.log("else");
+    }
   };
 
   return (
@@ -26,7 +57,14 @@ const CreateAccount = () => {
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
-              <input name="name" type="text" maxLength={5} autoComplete="off" />
+              <input
+                id="name"
+                value={createAccount.name}
+                type="text"
+                maxLength={5}
+                onChange={handleInput}
+                autoComplete="off"
+              />
             </div>
           </div>
           <div className="createAccount-content-input">
@@ -37,9 +75,11 @@ const CreateAccount = () => {
             계좌 별명을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
             <div className="createAccount-content-input-name">
               <input
-                name="accountName"
+                id="accountName"
+                value={createAccount.accountName}
                 type="text"
                 maxLength={10}
+                onChange={handleInput}
                 autoComplete="off"
               />
             </div>
@@ -53,11 +93,14 @@ const CreateAccount = () => {
             <PasswordInput isCheck={true} />
           </div>
           <div
-          // className={
-          //   checkPassword()
-          //     ? "createAccount-content-button"
-          //     : "createAccount-content-button inactive"
-          // }
+            className={
+              checkCreatePassword(
+                passwordData.password,
+                passwordData.checkPassword
+              )
+                ? "createAccount-content-button"
+                : "createAccount-content-button inactive"
+            }
           >
             <button onClick={handleButton}>확인</button>
           </div>

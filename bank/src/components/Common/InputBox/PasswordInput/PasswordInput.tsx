@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { passwordDataStat } from "recoil/account";
 import isEmpty from "util/isEmpty";
+import isNumber from "util/isNumber";
 
 import "./PasswordInput.scss";
-import isNumber from "../../../../util/isNumber";
 
 const PasswordInput = (props: { isCheck: boolean }) => {
   const [inputs, setInputs] = useState({

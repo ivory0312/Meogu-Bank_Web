@@ -19,7 +19,7 @@ const Account = () => {
   const { handleHistory } = useHandleHistory();
   const { checkPassword } = useAccount();
   const index: string[] = window.location.pathname.split("/");
-  const isValueEmpty = isEmpty(
+  const isValueEmpty: boolean = isEmpty(
     accountData.accountNumber && accountData.bank && accountData.price
   );
 

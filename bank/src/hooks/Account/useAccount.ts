@@ -15,7 +15,7 @@ const useAccount = () => {
     return false;
   };
 
-  const checkCreatePassword = () => {
+  const checkCreatePassword = (value: string[], checkValue: string[]) => {
     return true;
   };
 
