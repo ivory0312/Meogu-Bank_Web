@@ -2,10 +2,27 @@ import ResidentNumber from "components/Common/ResidentNumber";
 import useAccount from "hooks/Account/useAccount";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
+import isEmpty from "util/isEmpty";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ICreateAccountTypes, IFindAccountTypes } from "types/account.types";
+import { createAccountState, findAccountState } from "recoil/account";
 
 const AddAccount = () => {
-  const { checkPassword } = useAccount();
+  const [findAccountData, setFindAccountData] =
+    useRecoilState<IFindAccountTypes>(findAccountState);
+  const createAccount = useRecoilValue<ICreateAccountTypes>(createAccountState);
   const { handleHistory } = useHandleHistory();
+
+  const isValueEmpty: boolean = isEmpty("");
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFindAccountData({
+      name: e.target.value,
+      residentNumber: createAccount.residentNumber,
+    });
+
+    console.log(findAccountData);
+  };
 
   return (
     <>
@@ -19,7 +36,14 @@ const AddAccount = () => {
           <div className="createAccount-content-input">
             이름을 입력해주세요
             <div className="createAccount-content-input-name">
-              <input name="name" type="text" maxLength={5} autoComplete="off" />
+              <input
+                name="name"
+                value={findAccountData.name}
+                type="text"
+                onChange={handleInput}
+                maxLength={5}
+                autoComplete="off"
+              />
             </div>
           </div>
           <div className="createAccount-content-input">
@@ -28,11 +52,11 @@ const AddAccount = () => {
           </div>
 
           <div
-          // className={
-          //   checkPassword()
-          //     ? "createAccount-content-button"
-          //     : "createAccount-content-button inactive"
-          // }
+            className={
+              isValueEmpty
+                ? "createAccount-content-button inactive"
+                : "createAccount-content-button"
+            }
           >
             <button>확인</button>
           </div>

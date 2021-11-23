@@ -15,3 +15,8 @@ export interface IPasswordDataTypes {
   password: string[];
   checkPassword: string[];
 }
+
+export interface IFindAccountTypes {
+  name: string;
+  residentNumber: string;
+}

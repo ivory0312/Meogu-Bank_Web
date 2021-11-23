@@ -2,6 +2,7 @@ import { atom } from "recoil";
 import {
   IAccountDataTypes,
   ICreateAccountTypes,
+  IFindAccountTypes,
   IPasswordDataTypes,
 } from "types/account.types";
 
@@ -41,4 +42,14 @@ export const passwordData: IPasswordDataTypes = {
 export const passwordDataStat = atom<IPasswordDataTypes>({
   key: "passwordDataState",
   default: passwordData,
+});
+
+export const findAccount: IFindAccountTypes = {
+  name: "",
+  residentNumber: "",
+};
+
+export const findAccountState = atom<IFindAccountTypes>({
+  key: "findAccountState",
+  default: findAccount,
 });
