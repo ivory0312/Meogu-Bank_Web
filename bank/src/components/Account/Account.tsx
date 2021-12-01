@@ -24,6 +24,7 @@ const Account = () => {
   );
 
   const handleHome = () => {
+    //서버에 accountData 보내기
     handleHistory("/");
     setAccountData({
       bank: "",
