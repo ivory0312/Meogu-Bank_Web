@@ -1,14 +1,45 @@
 .sign {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   width: 300px;
   margin: 200px auto;
-  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--white);
 
   &-title {
-    margin: 15px 0;
+    padding: 15px 0;
     font-size: 18px;
     font-weight: bold;
+  }
+  &-content {
+    padding: 15px 0;
+
+    input {
+      width: 100%;
+      margin: 0 10px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--lightGray);
+    }
+  }
+  &-button {
+    padding: 5px 0;
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      color: var(--text);
+      font-weight: bold;
+      cursor: pointer;
+      background-color: var(--main);
+    }
+  }
+  span {
+    font-size: 14px;
+    color: var(--main);
+    cursor: pointer;
   }
 }
