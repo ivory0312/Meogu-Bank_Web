@@ -2,55 +2,67 @@ import { useState } from "react";
 import { ISignTypes } from "types/sign.type";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import "./Sign.scss";
+import useAuth from "../../hooks/Auth/useAuth";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isSignInState } from "recoil/sign";
 
 const SignIn = () => {
+  const { requestSignIn } = useAuth();
   const { handleHistory } = useHandleHistory();
   const [signInRequest, setSignInRequest] = useState<ISignTypes>({
     id: "",
     password: "",
   });
+  const setIsSignIn = useSetRecoilState(isSignInState);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignInRequest({
       ...signInRequest,
       [e.target.id]: e.target.value,
     });
-    console.log(signInRequest);
+  };
+
+  const handleClick = () => {
+    const result = requestSignIn(signInRequest);
+    result
+      .then((e) => {
+        localStorage.setItem("token", e.token);
+        setIsSignIn(true);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
     <div className="sign">
       <div className="sign-title">로그인</div>
       <div className="sign-content">
-        <table>
-          <tr>
-            <td>아이디</td>
-            <td>
-              <input
-                id="id"
-                type="text"
-                value={signInRequest.id}
-                onChange={handleInput}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td>
-              <input
-                id="password"
-                type="password"
-                value={signInRequest.password}
-                onChange={handleInput}
-              />
-            </td>
-          </tr>
-        </table>
+        <div className="sign-content-input">
+          <span>아이디</span>
+          <input
+            id="id"
+            value={signInRequest.id}
+            onChange={handleInput}
+            type="text"
+            autoComplete="off"
+          />
+        </div>
+        <div className="sign-content-input">
+          <span>비밀번호</span>
+          <input
+            id="password"
+            value={signInRequest.password}
+            onChange={handleInput}
+            type="password"
+            autoComplete="off"
+          />
+        </div>
       </div>
       <div className="sign-button">
-        <button>로그인</button>
+        <button onClick={handleClick}>로그인</button>
       </div>
-      <span onClick={() => handleHistory("/sign-up")}>
+      <span className="textButton" onClick={() => handleHistory("/sign-up")}>
         회원이 아니신가요? 회원가입하기
       </span>
     </div>

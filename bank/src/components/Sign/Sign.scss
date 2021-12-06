@@ -1,7 +1,7 @@
 .sign {
   text-align: center;
-  width: 300px;
-  margin: 200px auto;
+  width: 400px;
+  margin: 100px auto;
   padding: 15px;
   border-radius: 15px;
   background-color: var(--white);
@@ -14,8 +14,27 @@
   &-content {
     padding: 15px 0;
 
+    &-input {
+      float: left;
+      margin-bottom: 10px;
+
+      span {
+        display: inline-block;
+        text-align: right;
+        width: 70px;
+      }
+      button {
+        padding: 4px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: var(--main);
+      }
+    }
     input {
-      width: 100%;
+      width: 210px;
       margin: 0 10px;
       padding: 5px;
       border: none;
@@ -37,13 +56,20 @@
       background-color: var(--main);
     }
   }
-  span {
-    font-size: 14px;
-    color: var(--main);
-    cursor: pointer;
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
+.textButton {
+  font-size: 14px;
+  color: var(--main);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+.infoText {
+  text-align: left;
+  color: rgb(255, 75, 75) !important;
+  font-size: 12px;
 }
