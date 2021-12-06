@@ -1,13 +1,14 @@
-import { useRecoilState } from "recoil";
-import { signInState } from "recoil/sign";
-import { ISignInTypes } from "types/sign.type";
+import { useState } from "react";
+import { ISignTypes } from "types/sign.type";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import "./Sign.scss";
 
 const SignIn = () => {
   const { handleHistory } = useHandleHistory();
-  const [signInRequest, setSignInRequest] =
-    useRecoilState<ISignInTypes>(signInState);
+  const [signInRequest, setSignInRequest] = useState<ISignTypes>({
+    id: "",
+    password: "",
+  });
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignInRequest({

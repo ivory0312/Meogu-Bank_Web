@@ -1,4 +1,4 @@
-export interface ISignInTypes {
+export interface ISignTypes {
   id: string;
   password: string;
 }
