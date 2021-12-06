@@ -41,5 +41,9 @@
     font-size: 14px;
     color: var(--main);
     cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

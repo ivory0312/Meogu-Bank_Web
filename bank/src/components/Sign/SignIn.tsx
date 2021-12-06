@@ -1,8 +1,21 @@
+import { useRecoilState } from "recoil";
+import { signInState } from "recoil/sign";
+import { ISignInTypes } from "types/sign.type";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import "./Sign.scss";
 
 const SignIn = () => {
   const { handleHistory } = useHandleHistory();
+  const [signInRequest, setSignInRequest] =
+    useRecoilState<ISignInTypes>(signInState);
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignInRequest({
+      ...signInRequest,
+      [e.target.id]: e.target.value,
+    });
+    console.log(signInRequest);
+  };
 
   return (
     <div className="sign">
@@ -12,13 +25,23 @@ const SignIn = () => {
           <tr>
             <td>아이디</td>
             <td>
-              <input type="text" />
+              <input
+                id="id"
+                type="text"
+                value={signInRequest.id}
+                onChange={handleInput}
+              />
             </td>
           </tr>
           <tr>
             <td>비밀번호</td>
             <td>
-              <input type="password" />
+              <input
+                id="password"
+                type="password"
+                value={signInRequest.password}
+                onChange={handleInput}
+              />
             </td>
           </tr>
         </table>
