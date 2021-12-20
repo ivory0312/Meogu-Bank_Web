@@ -1,21 +1,25 @@
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import MainListItem from "components/Main/MainList/MainListItem";
-import useMainList from "hooks/main/useMainList";
 import Add from "assets/add.svg";
 import useHandleHistory from "hooks/History/useHandleHistory";
+import useAccount from "hooks/Account/useAccount";
 
 import "./MainList.scss";
 
-const MainList = (props: {
-  title: string;
-  content: string;
-  isAccount: boolean;
-}) => {
-  const { MainListDummy } = useMainList();
+const MainList = (props: { title: string; content: string }) => {
+  const { responseAccounts } = useAccount();
   const { handleHistory } = useHandleHistory();
 
   const [isMore, setIsMore] = useState<boolean>(false);
   const [height, setHeight] = useState<string>("165");
+
+  const [mainList, setMainList] = useState<any>();
+
+  useEffect(() => {
+    responseAccounts().then((e) => {
+      setMainList(e);
+    });
+  }, [mainList]);
 
   const handleMore = () => {
     if (isMore) {
@@ -23,7 +27,7 @@ const MainList = (props: {
       setHeight("165");
     } else {
       setIsMore(true);
-      setHeight(String(85 * MainListDummy.length));
+      setHeight(String(85 * mainList.length));
     }
   };
 
@@ -36,16 +40,10 @@ const MainList = (props: {
         </div>
       </div>
       <div className="mainList-content" style={{ height: `${height}px` }}>
-        {MainListDummy.map((data) => {
+        {mainList?.map((data: any) => {
           return (
             <>
-              <MainListItem
-                idx={data.idx}
-                name={data.name}
-                price={data.price}
-                image={data.image}
-                isAccount={props.isAccount}
-              />
+              <MainListItem idx={data.idx} name={data.name} pay={data.pay} />
             </>
           );
         })}

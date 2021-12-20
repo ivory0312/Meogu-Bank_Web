@@ -7,7 +7,7 @@ import { ISignUpType } from "types/sign.type";
 
 const SignUp = () => {
   const { handleHistory } = useHandleHistory();
-  const { requestSignUp } = useAuth();
+  const { requestSignUp, responseCheck } = useAuth();
   const [signUpRequest, setSignUpRequest] =
     useRecoilState<ISignUpType>(signUpState);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +18,21 @@ const SignUp = () => {
     console.log(signUpRequest);
   };
 
+  const handleCheck = () => {
+    responseCheck(signUpRequest.id)
+      .then(() => {
+        alert("사용가능합니다!");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   const handleNext = () => {
-    alert("adsf");
     requestSignUp(signUpRequest)
-      .then((e) => {
+      .then(() => {
         alert("회원가입 성공");
-        console.log(e.status);
+        handleHistory("/");
       })
       .catch((error) => {
         alert(error);
@@ -44,7 +53,7 @@ const SignUp = () => {
             type="text"
             autoComplete="off"
           />
-          <button>아이디 중복</button>
+          <button onClick={handleCheck}>아이디 중복</button>
         </div>
         <div className="sign-content-input">
           <span>비밀번호</span>
@@ -98,30 +107,6 @@ const SignUp = () => {
             autoComplete="off"
           />
         </div>
-        {/* <table>
-          <tr>
-            <td>아이디</td>
-            <td>
-              <input
-                id="id"
-                type="text"
-                value={signUpRequest.id}
-                onChange={handleInput}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td>
-              <input
-                id="password"
-                type="password"
-                value={signUpRequest.password}
-                onChange={handleInput}
-              />
-            </td>
-          </tr>
-        </table> */}
       </div>
       <div className="sign-button">
         <button onClick={handleNext}>회원가입</button>

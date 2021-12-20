@@ -11,7 +11,7 @@ const Routes = (): JSX.Element => {
     <Switch>
       <Route exact path="/" component={MainPage} />
       <Route exact path="/create-account" component={CreateAccountPage} />
-      <Route exact path="/account/:idx" component={AccountPage} />
+      <Route exact path="/account" component={AccountPage} />
       <Route exact path="/add-account" component={AddAccountPage} />
       <Route exact path="/sign-in" component={SignInPage} />
       <Route exact path="/sign-up" component={SignUpPage} />

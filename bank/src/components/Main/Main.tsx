@@ -1,12 +1,18 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { darkModeState } from "recoil/darkMode";
 import IDefaultProfile from "assets/IDefaultProfile";
 import MainList from "./MainList/MainList";
 
 import "./Main.scss";
+import { isSignInState } from "recoil/sign";
 
 const Main = (): JSX.Element => {
   const darkMode = useRecoilValue<boolean>(darkModeState);
+  const setIsSignIn = useSetRecoilState<boolean>(isSignInState);
+
+  const handleLogout = () => {
+    setIsSignIn(false);
+  };
 
   return (
     <>
@@ -21,13 +27,11 @@ const Main = (): JSX.Element => {
               안녕하세요!
             </div>
           </div>
+          <div className="logout" onClick={handleLogout}>
+            로그아웃
+          </div>
         </div>
-        <MainList title="계좌" content="계좌를 개설해보세요" isAccount={true} />
-        <MainList
-          title="저축"
-          content="저축을 시작해보세요"
-          isAccount={false}
-        />
+        <MainList title="계좌" content="계좌를 만들어보세요" />
       </div>
     </>
   );

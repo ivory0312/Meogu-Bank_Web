@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { ISignTypes } from "types/sign.type";
 import useHandleHistory from "hooks/History/useHandleHistory";
+import useAuth from "hooks/Auth/useAuth";
+import { useSetRecoilState } from "recoil";
+import { isSignInState, tokenState } from "recoil/sign";
+
 import "./Sign.scss";
-import useAuth from "../../hooks/Auth/useAuth";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isSignInState } from "recoil/sign";
 
 const SignIn = () => {
   const { requestSignIn } = useAuth();
@@ -14,6 +15,7 @@ const SignIn = () => {
     password: "",
   });
   const setIsSignIn = useSetRecoilState(isSignInState);
+  const setToken = useSetRecoilState(tokenState);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignInRequest({
@@ -32,6 +34,8 @@ const SignIn = () => {
       .catch((error) => {
         alert(error);
       });
+
+    console.log(result);
   };
 
   return (

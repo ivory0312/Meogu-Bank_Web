@@ -5,6 +5,7 @@ const CustomAxios = axios.create({
   baseURL: SERVER,
   headers: {
     "Content-Type": "application/json",
+    "meogu-token": "" + localStorage.getItem("token"),
   },
 });
 

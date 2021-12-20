@@ -65,14 +65,22 @@ const Account = () => {
         <span>메인 화면으로</span>
       </span>
       <div className="account-info">
-        <img src={MainListDummy[Number(index[2])].image} alt="" />
+        <img
+          src="https://cdn.discordapp.com/attachments/886128260256264227/901298700511506492/unknown.png"
+          alt=""
+        />
         <div className="account-info-name">
           <div>
-            <span>{MainListDummy[Number(index[2])].name}</span>
+            <span>
+              {/* {MainListDummy[Number(index[2])].name} */}
+              용돈2
+            </span>
             {MainListDummy[0].accountNumber}
           </div>
           <div>
-            잔액 {MainListDummy[Number(index[2])].price.toLocaleString()} 원
+            잔액
+            {/* {MainListDummy[Number(index[2])].price.toLocaleString()} */}
+            10000 원
           </div>
         </div>
       </div>
@@ -112,11 +120,12 @@ const Account = () => {
         <span>계좌 비밀번호</span>
         <PasswordInput isCheck={false} />
         <div
-          className={
-            checkPassword(passwordData.password, Number(index[2]))
-              ? "createAccount-content-button"
-              : "createAccount-content-button inactive"
-          }
+          // className={
+          //   checkPassword(passwordData.password, Number(index[2]))
+          //     ? "createAccount-content-button"
+          //     : "createAccount-content-button inactive"
+          // }
+          className="createAccount-content-button"
         >
           <button onClick={handleButton}>확인</button>
         </div>

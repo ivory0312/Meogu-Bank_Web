@@ -8,8 +8,6 @@ import {
 
 export const createAccount: ICreateAccountTypes = {
   name: "",
-  residentNumber: "",
-  accountName: "",
   password: "",
 };
 

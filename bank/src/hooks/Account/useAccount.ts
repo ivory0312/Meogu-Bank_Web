@@ -1,4 +1,9 @@
 import useMainList from "hooks/main/useMainList";
+import { useCallback } from "react";
+import {
+  getAccounts,
+  postMakeAccount,
+} from "../../lib/api/account/account.api";
 
 const useAccount = () => {
   const { MainListDummy } = useMainList();
@@ -22,7 +27,32 @@ const useAccount = () => {
     return false;
   };
 
-  return { checkPassword, checkCreatePassword };
+  const responseAccounts = useCallback(async () => {
+    try {
+      const { data } = await getAccounts();
+
+      return data;
+    } catch {
+      throw "계좌 목록 불러오기 실패";
+    }
+  }, []);
+
+  const requestMakeAccount = useCallback(async (body: object) => {
+    try {
+      const { data } = await postMakeAccount(body);
+
+      return data;
+    } catch {
+      throw "계좌 생성에 실패했습니다";
+    }
+  }, []);
+
+  return {
+    checkPassword,
+    checkCreatePassword,
+    responseAccounts,
+    requestMakeAccount,
+  };
 };
 
 export default useAccount;

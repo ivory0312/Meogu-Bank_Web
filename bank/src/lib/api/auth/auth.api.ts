@@ -1,5 +1,11 @@
 import CustomAxios from "lib/token/CustomAxios";
 
+export const getCheck = async (id: string) => {
+  const { data } = await CustomAxios.get(`/auth/signup/check?id=${id}`);
+
+  return data;
+};
+
 export const postSignUp = async (body: object) => {
   const { data } = await CustomAxios.post("/auth/signup", body);
 

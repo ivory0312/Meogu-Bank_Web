@@ -29,10 +29,6 @@ const ResidentNumber = () => {
         lastNumber: isNumber(e.target.value).valueData,
       });
     }
-    setCreateAccount({
-      ...createAccount,
-      residentNumber: `${residentNumber.firstNumber}${residentNumber.lastNumber}`,
-    });
   };
   const handleResidentNumber = useCallback(() => {
     if (residentNumberType === "password") {

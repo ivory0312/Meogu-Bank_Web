@@ -19,3 +19,8 @@ export const signUpState = atom<ISignUpType>({
   key: "signUpState",
   default: signUp,
 });
+
+export const tokenState = atom<string>({
+  key: "tokenState",
+  default: "",
+});

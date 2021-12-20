@@ -1,5 +1,4 @@
 import useAccount from "hooks/Account/useAccount";
-import ResidentNumber from "components/Common/ResidentNumber";
 import useHandleHistory from "hooks/History/useHandleHistory";
 import arrow from "assets/arrow.svg";
 import PasswordInput from "components/Common/InputBox/PasswordInput/PasswordInput";
@@ -13,13 +12,10 @@ import { useEffect } from "react";
 const CreateAccount = () => {
   const [createAccount, setCreateAccount] = useRecoilState(createAccountState);
   const passwordData = useRecoilValue(passwordDataStat);
-  const { checkCreatePassword } = useAccount();
+  const { checkCreatePassword, requestMakeAccount } = useAccount();
   const { handleHistory } = useHandleHistory();
   const isValueEmpty: boolean = isEmpty(
-    createAccount.name &&
-      createAccount.residentNumber &&
-      createAccount.accountName &&
-      createAccount.password
+    createAccount.name && createAccount.password
   );
 
   useEffect(() => {
@@ -44,11 +40,10 @@ const CreateAccount = () => {
       !isValueEmpty &&
       checkCreatePassword(passwordData.password, passwordData.checkPassword)
     ) {
+      requestMakeAccount(createAccount).then((e) => console.log(e));
       handleHistory("/");
       setCreateAccount({
         name: "",
-        residentNumber: "",
-        accountName: "",
         password: "",
       });
     }
@@ -64,30 +59,13 @@ const CreateAccount = () => {
         <div className="createAccount-content">
           <div className="createAccount-content-title">계좌 개설</div>
           <div className="createAccount-content-input">
-            이름을 입력해주세요
+            계좌 별명을 입력해주세요
             <div className="createAccount-content-input-name">
               <input
                 id="name"
                 value={createAccount.name}
                 type="text"
                 maxLength={5}
-                onChange={handleInput}
-                autoComplete="off"
-              />
-            </div>
-          </div>
-          <div className="createAccount-content-input">
-            주민등록번호를 입력해주세요
-            <ResidentNumber />
-          </div>
-          <div className="createAccount-content-input">
-            계좌 별명을 입력해주세요 <span>10글자 이내로 작성해주세요</span>
-            <div className="createAccount-content-input-name">
-              <input
-                id="accountName"
-                value={createAccount.accountName}
-                type="text"
-                maxLength={10}
                 onChange={handleInput}
                 autoComplete="off"
               />

@@ -18,7 +18,7 @@ const AddAccount = () => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFindAccountData({
       name: e.target.value,
-      residentNumber: createAccount.residentNumber,
+      residentNumber: "",
     });
 
     console.log(findAccountData);
